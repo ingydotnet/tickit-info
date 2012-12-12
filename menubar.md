@@ -4,4 +4,4 @@ This is a set of drop down menus. They have associated shortcut keys and menu se
 
 Taken from Elinks:
 
-![Menubar](menubar.png)
+![Menubar](https://github.com/ingydotnet/tickit-widgets-todo/blob/master/menubar.png)
