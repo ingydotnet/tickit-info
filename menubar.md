@@ -2,6 +2,4 @@
 
 This is a set of drop down menus. They have associated shortcut keys and menu selecting keys. They have grouping borders. Should be able to specify from a simple data structure.
 
-Taken from elinks:
-
-<img src="menubar.png">
+![Menubar](menubar.png "Taken from elinks")
