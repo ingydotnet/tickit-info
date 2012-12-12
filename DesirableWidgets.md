@@ -37,6 +37,14 @@ From Finch:
 
 ![Window Overlap](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/window-overlap.png)
 
+## Tabbed Window Interface
+
+A UI should be able to be organized into a set of windows selectable by tabs that look like browser tabs.
+
+Here is an OK one from an app called abook:
+
+![Tabbed Windows](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/tabbed-windows.png)
+
 ## Confirmation Dialog
 
 This is a Yes/No or OK/Cancel interface to some statement or question.
