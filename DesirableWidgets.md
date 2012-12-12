@@ -4,7 +4,10 @@ This document contains a collection of solid widgets found in various
 terminal apps. These should be represented in Tickit.
 
 Most of these examples are taken from Elinks and Finch, which are
-fairly polished terminal apps.
+fairly polished terminal apps. Elinks is one of the most advanced
+terminal web browsers, and Finch is a terminal based version of the
+famous Pidgin multiprotocol IM client. Finch uses a framework called
+libgnt, but that project seems to be dead.
 
 ## Menu Bar Widget
 
