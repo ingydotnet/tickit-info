@@ -20,7 +20,7 @@ Mouse, mousewheel, arrow keys, enter and escape should all DTRT.
 
 From Elinks:
 
-![Menubar](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/menubar.png)
+![Menubar](https://raw.github.com/ingydotnet/tickit-info/master/image/menubar.png)
 
 ## Draggable Windows
 
@@ -28,7 +28,7 @@ Finch (with its mouse support turned on) has draggable chat windows. By clicking
 
 The finch dragging does not show the animation during dragging, which feels a bit clunky.
 
-![Draggable Windows](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/draggable-windows.png)
+![Draggable Windows](https://raw.github.com/ingydotnet/tickit-info/master/image/draggable-windows.png)
 
 ## Window Overlap
 
@@ -38,7 +38,7 @@ the top one.
 
 From Finch:
 
-![Window Overlap](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/window-overlap.png)
+![Window Overlap](https://raw.github.com/ingydotnet/tickit-info/master/image/window-overlap.png)
 
 ## Tabbed Window Interface
 
@@ -46,7 +46,7 @@ A UI should be able to be organized into a set of windows selectable by tabs tha
 
 Here is an OK one from an app called abook:
 
-![Tabbed Windows](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/tabbed-windows.png)
+![Tabbed Windows](https://raw.github.com/ingydotnet/tickit-info/master/image/tabbed-windows.png)
 
 ## Confirmation Dialog
 
@@ -55,7 +55,7 @@ It is modal and displays in the center of the screen.
 
 From Elinks:
 
-![Confirmation Dialog](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/confirmation-dialog.png)
+![Confirmation Dialog](https://raw.github.com/ingydotnet/tickit-info/master/image/confirmation-dialog.png)
 
 ## Login Dialog
 
@@ -64,7 +64,7 @@ password. The password text shows up as \*\*\*\*\*.
 
 From Elinks and pause.org:
 
-![Login Dialog](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/login-dialog.png)
+![Login Dialog](https://raw.github.com/ingydotnet/tickit-info/master/image/login-dialog.png)
 
 ## List Widgets
 
@@ -75,6 +75,6 @@ In these screenshots from the Finch Buddy List, you see several things going on:
 * Vertical scrolling (mousewheel works)
 * A Status pulldown list
 
-![Login Dialog](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/buddy1.png)
+![Login Dialog](https://raw.github.com/ingydotnet/tickit-info/master/image/buddy1.png)
 
-![Login Dialog](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/buddy2.png)
+![Login Dialog](https://raw.github.com/ingydotnet/tickit-info/master/image/buddy2.png)
