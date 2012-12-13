@@ -66,3 +66,15 @@ From Elinks and pause.org:
 
 ![Login Dialog](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/login-dialog.png)
 
+## List Widgets
+
+In these screenshots from the Finch Buddy List, you see several things going on:
+
+* Exandable/Collapsable Sublists
+* Tooltip flyout for the current selection
+* Vertical scrolling (mousewheel works)
+* A Status pulldown list
+
+![Login Dialog](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/buddy1.png)
+
+![Login Dialog](https://raw.github.com/ingydotnet/tickit-widgets-todo/master/image/buddy2.png)
