@@ -1,4 +1,4 @@
-# Desirable Widgets
+# Desirable Widgets for Tickit
 
 This document contains a collection of solid widgets found in various
 terminal apps. These should be represented in Tickit.
