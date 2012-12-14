@@ -6,14 +6,14 @@ applications in general.
 
 ## General Info
 
-* [Some Interesting Links](tickit-info/InterestingLinks.md) related to Tickit
+* [Some Interesting Links](tickit-info/blob/master/InterestingLinks.md) related to Tickit
 
 ## Widget Research
 
-* [Desirable Widgets to Support](tickit-info/DesirableWidgets.md)
-* [Current set of Curses::UI Widgets](tickit-info/CurrentCursesUIWidgets.md)
-* [Currently Implemented Widgits in Tickit](tickit-info/CurrentTickitWidgets.md)
+* [Desirable Widgets to Support](tickit-info/blob/master/DesirableWidgets.md)
+* [Current set of Curses::UI Widgets](tickit-info/blob/master/CurrentCursesUIWidgets.md)
+* [Currently Implemented Widgits in Tickit](tickit-info/blob/master/CurrentTickitWidgets.md)
 
 ## Driving Use Cases
 
-* [Web Page Style Layout](tickit-info/LayoutUseCase.md)
+* [Web Page Style Layout](tickit-info/blob/master/LayoutUseCase.md)
