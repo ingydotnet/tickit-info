@@ -14,10 +14,10 @@ widgets.
 | Tickit::Widget::GridBox     | Tickit-Widgets | 0.32  | 0.07 | Cont      |       |
 | Tickit::Widget::HBox        | Tickit         | 0.32  |      | Cont      |       |
 | Tickit::Widget::HSplit      | Tickit-Widgets | 0.32  | 0.07 | Cont      |       |
-| Tickit::Widget::Menu        | self           |       | 0.06 |           | Test-case for Tickit::RenderContext |
+| Tickit::Widget::Menu        | self           | 0.32  | 0.07 |           | Test-case for Tickit::RenderContext |
 | Tickit::Widget::Progressbar | self           |       |      |           |       |
 | Tickit::Widget::RadioButton | Tickit-Widgets | 0.32  | 0.07 |           | Test-case for Tickit::Style |
-| Tickit::Widget::Scroller    | self           | 0.29  | 0.06 |           | Test-case for Tickit::RenderContext |
+| Tickit::Widget::Scroller    | self           | 0.32  | 0.07 |           | Test-case for Tickit::RenderContext |
 | Tickit::Widget::SparkLine   | self           |       |      |           |       |
 | Tickit::Widget::Static      | Tickit         | 0.32  |      |           |       |
 | Tickit::Widget::Tabbed      | self           |       |      | (no)      |       |
