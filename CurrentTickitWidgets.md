@@ -21,7 +21,7 @@ widgets.
 | Tickit::Widget::Scroller       | self           | 0.32  | 0.07 |           |       | C   |
 | Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.07 |           |       | C   |
 | Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
-| Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | C   |
+| Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Tabbed         | self           |       |      | (no)      |       | C   |
 | Tickit::Widget::Table          | self           |       |      |           |       |     |
 | Tickit::Widget::Tree           | self           |       |      |           |       | C   |
@@ -32,6 +32,7 @@ RCtx == 0.33: using Tickit's RenderBuffer
 
 Exp == Experiments:
   C: CLEAR_BEFORE_RENDER => 0
+  R: render_to_rb
 
 Tickit.pm seems to be the best candidate for the future of
 interactive terminal apps, but currently lacks the basic widgets to
