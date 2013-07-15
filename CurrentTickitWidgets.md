@@ -22,7 +22,7 @@ widgets.
 | Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.07 |           |       | C   |
 | Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
 | Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Tabbed         | self           |       |      | (no)      |       | C   |
+| Tickit::Widget::Tabbed         | self           | 0.32  | 0.33 | (no)      |       | cR  |
 | Tickit::Widget::Table          | self           |       |      |           |       |     |
 | Tickit::Widget::Tree           | self           |       |      |           |       | C   |
 | Tickit::Widget::VBox           | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
