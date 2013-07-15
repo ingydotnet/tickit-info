@@ -19,7 +19,7 @@ widgets.
 | Tickit::Widget::Progressbar    | self           |       |      |           |       |     |
 | Tickit::Widget::RadioButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Scroller       | self           | 0.32  | 0.07 |           |       | C   |
-| Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.07 |           |       | C   |
+| Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
 | Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Tabbed         | self           | 0.32  | 0.33 | (no)      |       | cR  |
