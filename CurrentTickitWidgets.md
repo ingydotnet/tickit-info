@@ -14,7 +14,7 @@ widgets.
 | Tickit::Widget::GridBox        | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
 | Tickit::Widget::HBox           | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
 | Tickit::Widget::HSplit         | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
-| Tickit::Widget::Menu           | self           | 0.32  | 0.07 |           |       | C   |
+| Tickit::Widget::Menu           | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Placegrid      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Progressbar    | self           |       |      |           |       |     |
 | Tickit::Widget::RadioButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
