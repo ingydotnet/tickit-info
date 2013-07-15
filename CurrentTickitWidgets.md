@@ -3,7 +3,7 @@
 This document has pictures and thoughts of all the current Tickit.pm
 widgets.
 
-| Name                           | Source         | Style | RCtx | Container | Notes | Exp |
+| Name                           | Source         | Style | RB   | Container | Notes | Exp |
 |--------------------------------|----------------|-------|------|-----------|-------|-----|
 | Tickit::Widget::Border         | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | cR  |
 | Tickit::Widget::Box            | Tickit         | 0.32  | 0.33 | Cont 1    |       | cR  |
@@ -18,7 +18,7 @@ widgets.
 | Tickit::Widget::Placegrid      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Progressbar    | self           |       |      |           |       |     |
 | Tickit::Widget::RadioButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Scroller       | self           | 0.32  | 0.07 |           |       | C   |
+| Tickit::Widget::Scroller       | self           | 0.32  | 0.07 |           | Still using RenderContext | C   |
 | Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
 | Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
@@ -27,8 +27,6 @@ widgets.
 | Tickit::Widget::Tree           | self           |       |      |           |       | C   |
 | Tickit::Widget::VBox           | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
 | Tickit::Widget::VSplit         | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
-
-RCtx == 0.33: using Tickit's RenderBuffer
 
 Exp == Experiments:
   C: CLEAR_BEFORE_RENDER => 0
