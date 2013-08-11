@@ -29,10 +29,13 @@ This document indicates (near) equivalents between UI widgets in Tickit and othe
 | VSplit            | VPaned             | GtkPaned          |
 
 *:
+
+|-------|--------------------------------------------|
 | GTK 3 | Scroller = GtkTextView + GtkScrolledWindow |
 | "     | Table = GtkTreeView + GtkTableStore        |
 
 URLs:
 
+|-----------------|---------------------------------------------|
 | Curses::Toolkit | https://metacpan.org/release/Curses-Toolkit |
 | GTK 3           | https://developer.gnome.org/gtk3/stable/    |
