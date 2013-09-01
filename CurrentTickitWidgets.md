@@ -24,6 +24,7 @@ widgets.
 | Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
 | Tickit::Widget::Spinner        | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Statusbar      | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Tabbed         | self           | 0.32  | 0.33 | (no)      |       | cR  |
 | Tickit::Widget::Table          | self           | 0.32  | 0.32 | Cont      |       | cR  |
 | Tickit::Widget::Tree           | self           |       |      |           |       | C   |
