@@ -18,7 +18,7 @@ widgets.
 | Tickit::Widget::Placegrid      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Progressbar    | self           |       |      |           |       |     |
 | Tickit::Widget::RadioButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Scroller       | self           | 0.32  | 0.07 |           | Still using RenderContext | C   |
+| Tickit::Widget::Scroller       | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::ScrollBox      | self           | 0.32  | 0.33 | Cont 1    |       | cR  |
 | Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
