@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+* { padding: 0; margin: 0; font-family: Arial,sans; }
+body { font-size: 85%; background: #ccc;}
+h2 { background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); color: #32f; border-radius: 15px 15px 0 0; padding: 0 0.5em 0 0.5em; text-shadow: -1px -1px 1px rgba(255,255,255,0.3);border-bottom:none}
+h3 { background:linear-gradient(to right, rgba(240,240,180,0.1) 0%, rgba(240,240,180,0.75) 100%); }
+dt { float: left; clear: both; width: 10em; display: block; font-family: monospace; text-shadow: 1px 1px 1px rgba(80,140,140,0.7); padding: 0 0.5em 0 0.5em;}
+dt a { font-family: monospace; color: blue; text-decoration: none; }
+dd { padding: 0em 0.5em 0em 10em; display: block; text-align: justify; }
+/* dd.odd { background:linear-gradient(to bottom, rgba(240,240,180,0.95) 0%,rgba(180,240,240,0) 100%); } */
+dd { background:linear-gradient(to bottom, rgba(180,240,240,0.75) 0%,rgba(240,240,180,0) 100%); }
+dl { overflow: auto; }
+table { padding: 0 0.5em 0 0.5em; }
+pre { font-family: monospace; }
+div.module { float: left;width: 25%; }
+div.module-inner { margin: 0.25em; border-radius: 15px; background: #eee; box-shadow:1px 1px 2px 2px rgba(30,30,30,0.3);}
+table th { text-align: left; padding-right: 0.5em;}
+table td { text-align: justify; }
+</style>
+</head>
+<body>
+  <div class="module" id="Tickit-Window">
+   <div class="module-inner">
+   <h2>Tickit::Window</h2>
+   <h3>Attributes</h3>
+   <dl>
+    <dt>parent</dt>
+    <dd class="even">
+    Returns the parent window; i.e. the window on which "make_sub" or
+    "make_float" was called to create this one
+
+  <dt>subwindows</dt>
+  <dd class="odd">
+    Returns a list of the subwindows of this one. They are returned in
+    order, highest first.
+
+    <dt>root</dt>
+    <dd class="even">
+    Returns the root window
+
+    <dt>term</dt>
+    <dd class="odd">
+    Returns the Tickit::Term instance of the terminal on which this window
+    lives.
+
+  
+    Returns the Tickit instance with which this window is associated.
+    <dt>is_visible</dt>
+    <dd class="even">
+    Returns true if the window is currently visible.
+    <dt>top</dt>
+    <dd class="even">
+    <dt>bottom</dt>
+    <dd class="odd">
+    <dt>left</dt>
+    <dd class="even">
+    <dt>right</dt>
+    <dd class="odd">
+    Returns the coordinates of the start of the window, relative to the
+    parent window.
+
+    <dt>abs_top</dt>
+    <dd class="even">
+    <dt>abs_left</dt>
+    <dd class="odd">
+    Returns the coordinates of the start of the window, relative to the root
+    window.
+
+    <dt>cols
+lines
+</dt>
+    <dd class="even">
+    Obtain the size of the window
+
+    <dt>rect</dt>
+    <dd class="odd">
+    Returns a Tickit::Rect containing representing the window's extent
+    relative to its parent
+
+    <dt>pen</dt>
+    <dd class="even">
+    Returns the current Tickit::Pen object associated with this window
+</dl>
+   <h3>Methods</h3>
+   <dl>
+    <dt>close</dt>
+    <dd class="even">
+    Removes the window from its parent and clears any event handlers set
+    using any of the "set_on_*" methods. Also recursively closes any child
+    windows.
+
+    Currently this is an optional method, as child windows are stored as
+    weakrefs, so should be destroyed when the last reference to them is
+    dropped. Widgets should make sure to call this method anyway, because
+    this will be changed in a future version.
+
+    <dt>make_sub( $top, $left, $lines, $cols )</dt>
+    <dd class="odd">
+    Constructs a new sub-window of the given geometry, and places it at the
+    end of the child window list; below any other siblings.
+
+    <dt>make_hidden_sub( $top, $left, $lines, $cols )</dt>
+    <dd class="even">
+    Constructs a new sub-window like "make_sub", but the window starts
+    initially hidden. This avoids having to call "hide" separately
+    afterwards.
+
+    <dt>make_float( $top, $left, $lines, $cols )</dt>
+    <dd class="odd">
+    Constructs a new sub-window of the given geometry, and places it at the
+    start of the child window list; above any other siblings.
+
+    <dt>
+make_popup(
+  $top,
+  $left,
+  $lines,
+  $cols
+)</dt>
+    <dd class="even">
+    Constructs a new floating popup window starting at the given coordinates
+    relative to this window. It will be sized to the given limits.
+
+    This window will have the root window as its parent, rather than the
+    window the method was called on. Additionally, a popup window will steal
+    all keyboard and mouse events that happen, regardless of focus or mouse
+    position. It is possible that, if the window has an "on_mouse" handler,
+    that it may receive mouse events from outwide the bounds of the window.
+
+    <dt>raise</dt>
+    <dt>lower</dt>
+    <dd class="odd">
+    Moves the order of the window in its parent one higher or lower relative
+    to its siblings.
+
+    <dt>raise_to_front</dt>
+    <dd class="even">
+    Moves the order of the window in its parent to be the front-most among
+    its siblings.
+
+    <dt>lower_to_back</dt>
+    <dd class="odd">
+    Moves the order of the window in its parent to be the back-most among
+    its siblings.
+
+    <dt>show</dt>
+    <dd class="even">
+    Makes the window visible. Allows drawing methods to output to the
+    terminal. Calling this method also exposes the window, invoking the
+    "on_expose" handler. Shows the cursor if this window currently has
+    focus.
+
+    <dt>hide</dt>
+    <dd class="odd">
+    Makes the window invisible. Prevents drawing methods outputting to the
+    terminal. Hides the cursor if this window currently has focus.
+
+    <dt>resize( $lines, $cols )</dt>
+    <dd class="odd">
+    Change the size of the window.
+
+    <dt>reposition( $top, $left )</dt>
+    <dd class="even">
+    Move the window relative to its parent.
+
+    <dt>change_geometry( $top, $left, $lines, $cols )</dt>
+    <dd class="odd">
+    A combination of "resize" and "reposition", to atomically change all the
+    coordinates of the window. Will only invoke "on_geom_changed" once,
+    rather than twice as would be the case calling the above methods
+    individually.
+
+    <dt>set_on_geom_changed( $on_geom_changed )</dt>
+    <dd class="even">
+    Set the callback to invoke whenever the window is resized or
+    repositioned; i.e. whenever its geometry changes.
+
+     $on_geom_changed-&gt;( $win )
+
+    <dt>set_on_key( $on_key )</dt>
+    <dd class="odd">
+    Set the callback to invoke whenever a key is pressed while this window,
+    or one of its child windows, has the input focus.
+
+    In a future release, this callback will be invoked in the following way:
+
+       <dt>$handled = $on_key-&gt;( $win, $event )</dt>
+       <dd class="even">
+
+    where $event is an object supporting methods called "type", "str" and
+    "mod". "type" will be "text" for normal unmodified Unicode, or "key" for
+    special keys or modified Unicode. "str" will be the UTF-8 string for
+    "text" events, or the textual description of the key as rendered by
+    Term::TermKey for "key" events. "mod" will be a bitmask of the modifier
+    state.
+
+    For backward-compatibility however, the event arguments are also
+    expanded positionally, and the object itself responds to stringification
+    overloading as the "type" method, such that it can be considered that it
+    is called in the following way instead:
+
+     $handled = $on_key-&gt;( $win, $type, $str, $mod )
+
+    Newly-written code should be written to use the event structure
+    directly, as eventually this legacy handling will be removed.
+
+    The invoked code should return a true value if it considers the keypress
+    dealt with, or false to pass it up to its parent window.
+
+    Before passing it to its parent, a window will also try any other
+    non-focused sibling windows of the currently-focused window in order of
+    creation (though note this order is not necessarily the order the child
+    widgets that own those windows were created or added to their
+    container).
+
+    If no window actually handles the keypress, then every window will
+    eventually be consulted about it, preferring windows closer to the
+    focused one.
+
+    This broadcast-like behaviour allows widgets to handle keypresses that
+    should make sense even though their window does not actually have the
+    keyboard focus. This feature should be used sparingly, to only capture
+    one or two keypresses that really make sense; for example to capture the
+    "PageUp" and "PageDown" keys in a scrolling list, or a numbered function
+    key that performs some special action.
+
+    <dt>set_on_mouse( $on_mouse )</dt>
+    <dd class="odd">
+    Set the callback to invoke whenever a mouse event is received within the
+    window's rectangle.
+
+    In a future release, this callback will be invoked in the following way:
+
+     $handled = $on_mouse-&gt;( $win, $event )
+
+    where $event is an object supporting methods called "type", "button",
+    "line", "col" and "mod". "type" will contain the event name. "button"
+    will contain the button number, though it may not be present for
+    "release" events. "line" and "col" are 0-based. "mod" is a bitmask of
+    modifier state. Behaviour of events involving more than one mouse button
+    is not well-specified by terminals.
+
+    For backward-compatibility however, the event arguments are also
+    expanded positionally, and the object itself responds to stringification
+    overloading as the "type" method, such that it can be considered that it
+    is called in the following way instead:
+
+     $handled = $on_mouse-&gt;( $win, $ev, $buttons, $line, $col, $mod )
+
+    Newly-written code should be written to use the event structure
+    directly, as eventually this legacy handling will be removed.
+
+    The following event names may be observed:
+
+    press   A mouse button has been pressed down on this cell
+
+    drag_start
+            The mouse was moved while a button was held, and was initially
+            in the given cell
+
+    drag    The mouse was moved while a button was held, and is now in the
+            given cell
+
+    drag_outside
+            The mouse was moved outside of the window that handled the
+            "drag_start" event, and is still being dragged.
+
+    drag_drop
+            A mouse button was released after having been moved, while in
+            the given cell
+
+    drag_stop
+            The drag operation has finished. This event is always given
+            directly to the window that handled the "drag_start" event,
+            rather than the window on which the mouse release event
+            happened.
+
+    release A mouse button was released after being pressed
+
+    The invoked code should return a true value if it considers the mouse
+    event dealt with, or false to pass it up to its parent window.
+
+    Once a dragging operation has begun via "drag_start", the window that
+    handled the event will always receive "drag", "drag_outside", and an
+    eventual "drag_stop" event even if the mouse moves outside that window.
+    No other window will receive a "drag_outside" or "drag_stop" event than
+    the one that started the operation.
+
+    <dt>set_on_expose( $on_expose )</dt>
+    <dd class="even">
+    Set the callback to invoke whenever a region of the window is exposed by
+    the "expose" event.
+
+     $on_expose-&gt;( $win, $rect )
+
+    Will be passed a Tickit::Rect representing the exposed region.
+
+    <dt>expose( $rect )</dt>
+    <dd class="odd">
+    Marks the given region of the window as having been exposed, to invoke
+    the "on_expose" event handler on itself, and all its child windows. The
+    window's own handler will be invoked first, followed by all the child
+    windows, in screen order (top to bottom, then left to right).
+
+    If $rect is not supplied it defaults to exposing the entire window area.
+
+    The "on_expose" event handler isn't invoked immediately; instead, the
+    "Tickit" "later" method is used to invoke it at the next round of IO
+    event handling. Until then, any other window could be exposed.
+    Duplicates are suppressed; so if a window and any of its ancestors are
+    both queued for expose, the actual handler will only be invoked once per
+    unique region of the window.
+
+    <dt>set_on_focus( $on_refocus )</dt>
+    <dd class="even">
+    Set the callback to invoke whenever the window gains or loses focus.
+
+     $on_refocus-&gt;( $win, $has_focus )
+
+    Will be passed a boolean value, true if the focus was just gained, false
+    if the focus was just lost.
+
+    <dt>set_expose_after_scroll( $expose_after_scroll )</dt>
+    <dd class="odd">
+    If set to a true value, the "scrollrect" method will expose the region
+    of the window that requires redrawing. If "scrollrect" was successful,
+    this will be just the newly-exposed portion that was scrolled in. If it
+    was unsuccessful it will be the entire window region. If set false, no
+    expose will happen, and the code calling "scrollrect" must re-expose as
+    required.
+
+    This is a temporary method to handle the transition of behaviours; it
+    may be removed in the future and its behaviour implied true always.
+
+    <dt>set_pen( $pen )</dt>
+    <dd class="odd">
+    Replace the current Tickit::Pen object for this window with a new one.
+    The object reference will be stored, allowing it to be shared with other
+    objects. If "undef" is set, then a new, blank pen will be constructed.
+
+    <dt>getpenattr( $attr )</dt>
+    <dd class="even">
+    Returns a single attribue from the current pen
+
+    <dt>get_effective_pen</dt>
+    <dd class="odd">
+    Returns a new Tickit::Pen containing the effective pen attributes for
+    the window, combined by those of all its parents.
+
+    <dt>get_effective_penattr( $attr )</dt>
+    <dd class="even">
+    Returns the effective value of a pen attribute. This will be the value
+    of this window's attribute if set, or the effective value of the
+    attribute from its parent.
+
+    <dt>goto( $line, $col )</dt>
+    <dd class="odd">
+    Moves the cursor to the given position within the window. Both $line and
+    $col are 0-based. The given position does not have to lie within the
+    bounds of the window. Lines above or below the window are never
+    displayed, columns to the left or right are clipped as appropriate. The
+    virtual position of the cursor is still tracked even if it is not
+    visibly displayed on the actual terminal.
+
+    <dt>print( $text, $pen )
+print( $text, %attrs )
+</dt>
+    <dd class="even">
+    Print the given text to the terminal at the current cursor position
+    using the pen of the window, possibly overridden by any extra attributes
+    in the given "Tickit::Pen" instance, or directly in the given hash, if
+    one is provided.
+
+    Returns a Tickit::StringPos object giving the total count of string
+    printed, including in obscured sections covered by other windows, or
+    clipped by window boundaries.
+
+    <dt>erasech( $count, $moveend, $pen )
+erasech( $count, $moveend, %attrs )
+</dt>
+    <dd class="odd">
+    Erase $count columns forwards. If $moveend is true, the cursor will be
+    placed at the end of the erased region. If defined but false, it will
+    not move from its current location. If undefined, the terminal will take
+    which ever option it can implement most efficiently.
+
+    If a "Tickit::Pen" or pen attributes are provided, they are used to
+    override the background colour for the erased region.
+
+    Returns a Tickit::StringPos object giving the total count of string
+    printed, including in obscured sections covered by other windows, or
+    clipped by window boundaries. Only the "columns" field will be valid;
+    the others will be -1.
+
+  <dt>
+clearrect( $rect )
+clearrect( $rect, $pen )
+clearrect( $rect, %attrs )
+  </dt>
+  <dd class="even">
+    Erase the content of the window within the given Tickit::Rect. If a
+    "Tickit::Pen" or pen attributes are provided, they are used to override
+    the background colour for the erased region.
+
+  <dt>
+scrollrect( $top, $left, $lines, $cols, $downward, $rightward )
+scrollrect( ..., $pen )
+scrollrect( ..., %attrs )
+  </dt>
+  <dd class="odd">
+    Attempt to scroll the rectangle of the window defined by the first four
+    parameters by an amount given by the latter two. Since most terminals
+    cannot perform arbitrary rectangle scrolling, this method returns a
+    boolean to indicate if it was successful. The caller should test this
+    return value and fall back to another drawing strategy if the attempt
+    was unsuccessful.
+
+    Optionally, a "Tickit::Pen" instance or hash of pen attributes may be
+    provided, to override the background colour used for erased sections
+    behind the scroll.
+
+    The cursor may move as a result of calling this method; its location is
+    undefined if this method returns successful. The terminal pen, in
+    particular the background colour, may be modified by this method even if
+    it fails to scroll the terminal (and returns false).
+
+    If the "expose_after_scroll" behavior is enabled, then this method will
+    enqueue all of the required expose requests before returning, so in this
+    case the return value is not interesting.
+
+    <dt>scroll( $downward, $rightward )</dt>
+    <dd class="even">
+    A shortcut for calling "scrollrect" on the entire region of the window.
+
+    <dt>cursor_at( $line, $col )</dt>
+    <dd class="odd">
+    Sets the position in the window at which the terminal cursor will be
+    placed if this window has focus. This method does *not* force the window
+    to take the focus though; for that see "take_focus".
+
+    <dt>cursor_shape( $shape )</dt>
+    <dd class="even">
+    Sets the shape that the terminal cursor will have if this window has
+    focus. This method does *not* force the window to take the focus though;
+    for that see "take_focus". Valid values for $shape are the various
+    "TERMCTL_CURSORSHAPE_*" constants from Tickit::Term.
+
+    <dt>take_focus</dt>
+    <dd class="odd">
+    Causes this window to take the input focus, and updates the cursor
+    position to the stored active position given by "cursor_at".
+
+    <dt>focus( $line, $col )</dt>
+    <dd class="even">
+    A convenient shortcut combining "cursor_at" with "take_focus"; setting
+    the focus cursor position and taking the input focus.
+
+    <dt>is_focused</dt>
+    <dd class="odd">
+    Returns true if this window currently has the input focus
+
+    <dt>restore</dt>
+    <dd class="even">
+    Restore the state of the terminal to its idle state. Places the cursor
+    back at the focus position, and restores the pen.
+
+    <dt>clearline( $line )</dt>
+    <dd class="odd">
+    Erase the entire content of one line of the window
+
+    <dt>clear</dt>
+    <dd class="even">
+    Erase the entire content of the window and reset it to the current
+    background colour.
+    </dl>
+  </div>
+  </div>
+  <div class="module" id="Tickit-Widget">
+   <div class="module-inner">
+   <h2>Tickit::Widget</h2>
+   <h3>Methods</h3>
+   <dl>
+    <dt>focus_next_before (&lt;Tab&gt;)</dt>
+    <dd class="odd">
+    <dt>focus_next_after (&lt;S-Tab&gt;)</dt>
+    <dd class="even">
+        Requests the focus move to the next or previous focusable widget in
+        display order.
+
+  <dt>new( %args )</dt>
+  <dd class="odd">
+    Constructs a new "Tickit::Widget" object. Must be called on a subclass
+    that implements the required methods; see the SUBCLASS METHODS section
+    below.
+
+    Any pen attributes present in %args will be used to set the default
+    values on the widget's pen object, other than the following:
+
+    class =&gt; STRING
+    classes =&gt; ARRAY of STRING
+            If present, gives the "Tickit::Style" class name or names
+            applied to this widget.
+
+    style =&gt; HASH
+            If present, gives a set of "direct applied" style to the Widget.
+            This is treated as an extra set of style definitions that apply
+            more directly than any of the style classes or the default
+            definitions.
+
+            The hash should contain style keys, optionally suffixed by style
+            tags, giving values.
+
+             style =&gt; {
+               'fg'        =&gt; 3,
+               'fg:active' =&gt; 5,
+             }
+
+<dt>style_classes</dt>
+<dd class="even">
+    Returns a list of the style class names this Widget has.
+
+<dt>set_style_tag( $tag, $value )</dt>
+<dd class="odd">
+    Sets the (boolean) state of the named style tag. After calling this
+    method, the "get_style_*" methods may return different results. No
+    resizing or redrawing is necessarily performed; but the widget can use
+    "style_reshape_keys", "style_reshape_textwidth_keys" or
+    "style_redraw_keys" to declare which style keys should cause automatic
+    reshaping or redrawing. In addition it can override the
+    "on_style_changed_values" method to inspect the changes and decide for
+    itself.
+
+<dt>get_style_values( @keys )
+get_style_values( $key )
+</dt>
+<dd class="even">
+    Returns a list of values for the given keys of the currently-applied
+    style. For more detail see the Tickit::Style documentation. Returns just
+    one value in scalar context.
+
+<dt>get_style_pen( $prefix )</dt>
+<dd class="odd">
+    A shortcut to calling "get_style_values" to collect up the pen
+    attributes, and form a Tickit::Pen::Immutable object from them. If
+    $prefix is supplied, it will be prefixed on the pen attribute names with
+    an underscore (which would be read from the stylesheet file as a hypen).
+    Note that the returned pen instance is immutable, and may be cached.
+
+    If the class constant method "WIDGET_PEN_FROM_STYLE" takes a true value,
+    then extra logic is applied to the constructor and during style changes,
+    to set the widget pen from the default style pen. Furthermore, plain
+    attributes given to the constructor that take the names of pen
+    attributes will be set on the widget's direct-applied style. This has
+    the overall effect of unifying the widget pen with the default style
+    pen, and additionally allowing further customisation for state changes
+    or style classes.
+
+    It is likely that this behaviour will become the default in some future
+    version with the eventual aim to remove the idea of a widget pen
+    entirely.
+
+     use constant WIDGET_PEN_FROM_STYLE =&gt; 1;
+
+    The widget pen is set to be a mutable clone of the default style pen, to
+    allow the legacy behaviour that some code may attempt to mutate the
+    widget pen directly. In this case the widget's direct-applied style will
+    not be updated to reflect the changes, however. Code using widgets with
+    style-managed pens should not attempt to mutate the widget pen, but
+    should use "set_style" instead. A future version may yield warnings or
+    exceptions if the style-managed widget pen is mutated.
+
+<dt>get_style_text</dt>
+<dd class="even">
+    A shortcut to calling "get_style_values" for a single key called "text".
+
+<dt>set_style( %defs )</dt>
+<dd class="odd">
+    Changes the widget's direct-applied style.
+
+    %defs should contain style keys optionally suffixed with tags in the
+    same form as that given to the "style" key to the constructor. Defined
+    values will add to or replace values already stored by the widget. Keys
+    mapping to "undef" are deleted from the stored style.
+
+    Note that changing the direct applied style is moderately costly because
+    it must invalidate all of the cached style values and pens that depend
+    on the changed keys. For normal runtime changes of style, consider using
+    a tag if possible, because style caching takes tags into account, and
+    simply changing applied style tags does not invalidate the caches.
+
+<dt>set_window( $window )</dt>
+<dd class="even">
+    Sets the Tickit::Window for the widget to draw on. Setting "undef"
+    removes the window.
+
+    If a window is associated to the widget, that window's pen is set to the
+    current widget pen. The widget is then drawn to the window by calling
+    the "render" method. If a window is removed (by setting "undef") then no
+    cleanup of the window is performed; the new owner of the window is
+    expected to do this.
+
+    This method may invoke the "window_gained" and "window_lost" methods.
+
+<dt>window</dt>
+<dd class="odd">
+    Returns the current window of the widget, if one has been set using
+    "set_window".
+
+<dt>set_parent( $parent )</dt>
+<dd class="even">
+    Sets the parent widget; pass "undef" to remove the parent.
+
+    $parent, if defined, must be a subclass of Tickit::ContainerWidget.
+
+<dt>parent</dt>
+<dd class="odd">
+    Returns the current container widget
+
+<dt>resized</dt>
+<dd class="even">
+    Provided for subclasses to call when their size requirements have or may
+    have changed. Informs the parent that the widget may require a
+    differently-sized window.
+
+<dt>redraw</dt>
+<dd class="odd">
+    Clears the widget's window then invokes the "render" method. This should
+    completely redraw the widget.
+
+    This redraw doesn't happen immediately. The widget is marked as needing
+    to redraw, and its parent is marked that it has a child needing redraw,
+    recursively to the root widget. These will then be flushed out down the
+    widget tree using an "Tickit" "later" call. This allows other widgets to
+    register a requirement to redraw, and have them all flushed in a fairly
+    efficient manner.
+
+<dt>pen</dt>
+<dd class="even">
+    Returns the widget's Tickit::Pen. Modifying an attribute of the returned
+    object results in the widget being redrawn if the widget has a window
+    associated.
+
+<dt>set_pen( $pen )</dt>
+<dd class="odd">
+    Set a new "Tickit::Pen" object. This is stored by reference; changes to
+    the pen will be reflected in the rendered look of the widget. The same
+    pen may be shared by more than one widget; updates will affect them all.
+
+<dt>take_focus</dt>
+<dd class="even">
+    Calls "take_focus" on the Widget's underlying Window, if present, or
+    stores that the window should take focus when one is eventually set by
+    "set_window".
+
+    May only be called on Widget subclasses that override "CAN_FOCUS" to
+    return a true value.
+
+SUBCLASS METHODS
+    Because this is an abstract class, the constructor must be called on a
+    subclass which implements the following methods.
+
+<dt>render_to_rb( $renderbuffer, $rect )</dt>
+<dd class="odd">
+    Called to redraw the widget's content to the given Tickit::RenderBuffer.
+
+    Will be passed the clipping rectangle region to be rendered; the method
+    does not have to render any content outside of this region.
+
+<dt>reshape</dt>
+<dd class="even">
+    Optional. Called after the window geometry is changed. Useful to
+    distribute window change sizes to contained child widgets.
+
+<dt>lines</dt>
+<dd class="odd">
+<dt>cols</dt>
+<dd class="even">
+    Called to enquire on the requested window for this widget. It is
+    possible that the actual allocated window may be larger, or smaller than
+    this amount.
+
+<dt>window_gained( $window )</dt>
+<dd class="odd">
+    Optional. Called by "set_window" when a window has been set for this
+    widget.
+
+<dt>window_lost( $window )</dt>
+<dd class="even">
+    Optional. Called by "set_window" when "undef" has been set as the window
+    for this widget. The old window object is passed in.
+
+<dt>on_key( ... )</dt>
+<dd class="odd">
+    Optional. If provided, this method will be set as the "on_key" callback
+    for any window set on the widget. By providing this method a subclass
+    can implement widgets that respond to user input. It receives the same
+    arguments as the underlying window "on_key" event.
+
+<dt>on_mouse( ... )</dt>
+<dd class="even">
+    Optional. If provided, this method will be set as the "on_mouse"
+    callback for any window set on the widget. By providing this method a
+    subclass can implement widgets that respond to user input. If receives
+    the same arguments as the underlying window "on_mouse" event.
+
+<dt>on_style_changed_values( %values )</dt>
+<dd class="odd">
+    Optional. If provided, this method will be called by "set_style_tag" to
+    inform the widget which style keys may have changed values, as a result
+    of the tag change. The style values are passed in ARRAY references of
+    two elements, containing the old and new values.
+
+    The %values hash may contain false positives in some cases, if the old
+    and the new value are actually the same, but it still appears from the
+    style definitions that certain keys are changed.
+
+    Most of the time this method may not be necessary as the
+    "style_reshape_keys" "style_reshape_textwidth_keys", and
+    "style_redraw_keys" declarations should suffice for most purposes.
+
+<dt>CAN_FOCUS</dt>
+<dd class="even">
+    Optional, normally false. If this constant method returns a true value,
+    the widget is allowed to take focus using the "take_focus" method. It
+    will also take focus automatically if it receives a mouse button 1 press
+    event.
+
+<dt>KEYPRESSES_FROM_STYLE</dt>
+<dd class="odd">
+    Optional, normally false. If this constant method returns a true value,
+    the widget will use style information to invoke named methods on
+    keypresses. When the window's "on_key" event is invoked, the widget will
+    first attempt to look up a style key with the name of the pressed key,
+    including its modifier key prefixes, surrounded by "&lt;angle brackets&gt;".
+    If this gives the name of a, method prefixed by "key_" then that method
+    is invoked as a special-purpose "on_key" handler. If this does not
+    exist, or does not return true, then the widget's regular "on_key"
+    handler is invoked, if present.
+
+    As a special case, space is given the key name "&lt;Space&gt;" instead of
+    being notated by a literal space character in brackets, for neatness of
+    the style information.
+</dl>
+
+<h3>STYLE</h3>
+    The following style tags are used on all widget classes that use Style:
+
+    :focus
+        Set when this widget has the input focus
+
+  </div>
+  </div>
+  <div class="module" id="Tickit-RenderBuffer">
+   <div class="module-inner">
+   <h2>Tickit::RenderBuffer</h2>
+   <h3>Constructor</h3>
+   <p>Takes the following named arguments:</p>
+   <table>
+    <tbody>
+     <tr>
+     <th>lines</th>
+     <td>number of lines in the buffer area</td>
+     </tr>
+     <tr>
+      <th>cols</th>
+      <td>number of cols in the buffer area</td>
+     </tr>
+    </tbody>
+   </table>
+  <h3>Line types</h3>
+  <table>
+   <tbody>
+    <tr>
+     <th>LINE_SINGLE</th>
+     <td>A single, thin line</td>
+    </tr>
+    <tr>
+     <th>LINE_DOUBLE</th>
+     <td>A pair of double, thin lines</td>
+    </tr>
+    <tr>
+     <th>LINE_THICK</th>
+     <td>A single, thick line</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>Cap types</h3>
+  <table>
+   <tbody>
+    <tr>
+     <th>CAP_START</th>
+     <td>Start of line covers entire cell</td>
+    </tr>
+    <tr>
+     <th>CAP_END</th>
+     <td>End of line covers entire cell</td>
+    </tr>
+    <tr>
+     <th>CAP_BOTH</th>
+     <td>Both start and end</td>
+    </tr>
+   </tbody>
+  </table>
+   <h3>METHODS</h3>
+   <dl>
+  <dt><a href="#Tickit-RenderBuffer-lines">lines</a></dt>
+  <dd class="even">
+  <dt><a href="#Tickit-RenderBuffer-cols">cols</a></dt>
+  <dd class="odd">
+    Returns the size of the buffer area
+
+  <dt><a href="#Tickit-RenderBuffer-line">line</a></dt>
+  <dd class="even">
+  <dt><a href="#Tickit-RenderBuffer-col">col</a></dt>
+  <dd class="odd">
+    Returns the current position of the virtual cursor, or "undef" if it is
+    not set.
+
+  <dt><a href="#Tickit-RenderBuffer-save">save</a></dt>
+  <dd class="even">
+    Pushes a new state-saving context to the stack, which can later be
+    returned to by the "restore" method.
+
+  <dt><a href="#Tickit-RenderBuffer-savepen">savepen</a></dt>
+  <dd class="odd">
+    Pushes a new state-saving context to the stack that only stores the pen.
+    This can later be returned to by the "restore" method, but will only
+    restore the pen. Other attributes such as the virtual cursor position
+    will be unaffected.
+
+    This may be more efficient for rendering runs of text in a different
+    pen, than multiple calls to "text" or "erase" using the same pen. For a
+    single call it is better just to pass a different pen directly.
+
+  <dt><a href="#Tickit-RenderBuffer-restore">restore</a></dt>
+  <dd class="even">
+    Pops and restores a saved state previously created with "save".
+
+  <dt><a href="#Tickit-RenderBuffer-clip">clip</a>( $rect )</dt>
+  <dd class="odd">
+    Restricts the clipping rectangle of drawing operations to be no further
+    than the limits of the given rectangle. This will apply to subsequent
+    rendering operations but does not affect existing content, nor the
+    actual rendering to the window.
+
+    Clipping rectangles cumulative; each call further restricts the drawing
+    region. To revert back to a larger drawing area, use the "save" and
+    "restore" stack.
+
+  <dt><a href="#Tickit-RenderBuffer-translate">translate</a>( $downward, $rightward )</dt>
+  <dd class="even">
+    Applies a translation to the coordinate system used by "goto" and the
+    absolute-position methods *_at. After this call, all positions used will
+    be offset by the given amount.
+
+  <dt><a href="#Tickit-RenderBuffer-reset">reset</a></dt>
+  <dd class="odd">
+    Removes any pending changes and reverts the "RenderBuffer" to its
+    default empty state. Undefines the virtual cursor position, resets the
+    clipping rectangle, and clears the stack of saved state.
+
+  <dt><a href="#Tickit-RenderBuffer-clear">clear</a>( $pen )</dt>
+  <dd class="even">
+    Resets every cell in the buffer to an erased state. A shortcut to
+    calling "erase_at" for every line.
+
+  <dt><a href="#Tickit-RenderBuffer-goto">goto</a>( $line, $col )</dt>
+  <dd class="odd">
+    Sets the position of the virtual cursor.
+
+  <dt><a href="#Tickit-RenderBuffer-setpen">setpen</a>( $pen )</dt>
+  <dd class="even">
+    Sets the rendering pen to use for drawing operations. If a pen is set
+    then a $pen argument is optional to any of the drawing methods. If a pen
+    argument is supplied as well as having a stored pen, then the attributes
+    are merged, with the directly-applied pen taking precedence.
+
+    Successive calls to this method will replace the active pen used, but if
+    there is a saved state on the stack it will be merged with the rendering
+    pen of the most recent saved state.
+
+    This method may be preferrable to passing pens into multiple "text" or
+    "erase" calls as it may be more efficient than merging the same pen on
+    every call. If the original pen is still required afterwards, the
+    "savepen" / "restore" pair may be useful.
+
+  <dt><a href="#Tickit-RenderBuffer-skip_at">skip_at</a>( $line, $col, $len )</dt>
+  <dd class="odd">
+    Sets the range of cells given to a skipped state. No content will be
+    drawn here, nor will any content existing on the window be erased.
+
+    Initially, or after calling "reset", all cells are set to this state.
+
+  <dt><a href="#Tickit-RenderBuffer-skip">skip</a>( $len )</dt>
+  <dd class="even">
+    Sets the range of cells at the virtual cursor position to a skipped
+    state, and updates the position.
+
+  <dt><a href="#Tickit-RenderBuffer-skip_to">skip_to</a>( $col )</dt>
+  <dd class="odd">
+    Sets the range of cells from the virtual cursor position until before
+    the given column to a skipped state, and updates the position to the
+    column.
+
+    If the position is already past this column then the cursor is moved
+    backwards and no buffer changes are made.
+
+  <dt><a href="#Tickit-RenderBuffer-text_at">text_at</a>( $line, $col, $text, $pen )</dt>
+  <dd class="even">
+    Sets the range of cells starting at the given position, to render the
+    given text in the given pen.
+
+  <dt><a href="#Tickit-RenderBuffer-text">text</a>( $text, $pen )</dt>
+  <dd class="odd">
+    Sets the range of cells at the virtual cursor position to render the
+    given text in the given pen, and updates the position.
+
+  <dt><a href="#Tickit-RenderBuffer-erase_at">erase_at</a>( $line, $col, $len, $pen )</dt>
+  <dd class="even">
+    Sets the range of cells given to erase with the given pen.
+
+  <dt><a href="#Tickit-RenderBuffer-erase">erase</a>( $len, $pen )</dt>
+  <dd class="odd">
+    Sets the range of cells at the virtual cursor position to erase with the
+    given pen, and updates the position.
+
+  <dt><a href="#Tickit-RenderBuffer-erase_to">erase_to</a>( $col, $pen )</dt>
+  <dd class="even">
+    Sets the range of cells from the virtual cursor position until before
+    the given column to erase with the given pen, and updates the position
+    to the column.
+
+    If the position is already past this column then the cursor is moved
+    backwards and no buffer changes are made.
+
+  <dt><a href="#Tickit-RenderBuffer-eraserect">eraserect</a>( $rect, $pen )</dt>
+  <dd class="odd">
+    Sets the range of cells given by the rectangle to erase with the given
+    pen.
+  <dt><a href="#Tickit-RenderBuffer-hline_at">hline_at</a>( $line, $startcol, $endcol, $style, $pen, $caps )</dt>
+  <dd class="even">
+    Draws a horizontal line between the given columns (both are inclusive),
+    in the given line style, with the given pen.
+
+  <dt><a href="#Tickit-RenderBuffer-vline_at">vline_at</a>( $startline, $endline, $col, $style, $pen, $caps )</dt>
+  <dd class="odd">
+    Draws a vertical line between the centres of the given lines (both are
+    inclusive), in the given line style, with the given pen.
+
+  <dt><a href="#Tickit-RenderBuffer-char_at">char_at</a>( $line, $col, $codepoint, $pen )</dt>
+  <dd class="even">
+    Sets the given cell to render the given Unicode character (as given by
+    codepoint number, not character string) in the given pen.
+
+    While this is also achieveable by the "text_at" method, this method is
+    implemented without storing a text segment, so can be more efficient
+    than many single-column wide "text_at" calls. It will also be more
+    efficient in the C library rewrite.
+
+  <dt><a href="#Tickit-RenderBuffer-flush_to_window">flush_to_window</a>( $win )</dt>
+  <dd class="odd">
+    Renders the stored content to the given Tickit::Window. After this, the
+    buffer will be cleared and reset back to initial state.
+    </dl>
+  </div>
+  </div>
+ <div class="module" id="Tickit">
+  <div class="module-inner">
+  <h2>Tickit</h2>
+  <h3>Constructor</h3>
+  <p>Takes the following named arguments:</p>
+  <table>
+   <tbody>
+    <tr>
+     <th>term_in</th>
+     <td>IO handle for terminal input. Will default to "STDIN"</td>
+    </tr>
+    <tr>
+     <th>term_out</th>
+     <td>IO handle for terminal output. Will default to "STDOUT"</td>
+    </tr>
+    <tr>
+     <th>root</th>
+     <td>If defined, sets the root widget using "set_root_widget" to the one specified.</td>
+    </tr>
+   </tbody>
+  </table>
+  </pre>
+  <h3>Attributes</h3>
+  <table>
+   <tbody>
+    <tr>
+     <th>term</th>
+     <td>Returns the underlying Tickit::Term object</td>
+    </tr>
+    <tr>
+   <th>cols</th>
+   <td>
+    Number of columns on the terminal
+   </td>
+   </tr>
+   <tr>
+   <th>lines</th>
+   <td>
+   Query the current size of the terminal. Will be cached and updated on
+   receipt of "SIGWINCH" signals.
+   </td>
+   </tr>
+   <tr><th>rootwin</th>
+   <td>
+   Returns the root Tickit::Window.
+   </td>
+   </tr>
+   </tbody>
+   </table>
+  <h3>Methods</h3>
+  <dl>
+   <dt><a href="#Tickit-later">later</a>(<br> $code<br> )</dt>
+    <dd class="odd">
+     Runs the given CODE reference at some time soon in the future. It will
+     not be invoked yet, but will be invoked at some point before the next
+     round of input events are processed.
+    </dd>
+    <dt><a href="#Tickit-timer">timer</a>(<br> $mode,<br> $amount,<br> $code<br> )</dt>
+    <dd class="even">
+     Runs the given CODE reference at some fixed point in time in the future.
+     $mode must be either the string "at", or "after"; and specifies that
+     $amount gives either the absolute epoch time, or the delay relative to
+     now, respectively. Fractions are supported to a resolution of
+     microseconds.
+    <pre>
+timer(at =&gt; $epoch, $code )
+timer(after =&gt; $delay, $code )
+    </pre>
+    </dd>
+    <dt><a href="#Tickit-bind_key">bind_key</a>(<br> $key,<br> $code<br> )</dt>
+    <dd class="odd">
+    Installs a callback to invoke if the given key is pressed, overwriting
+    any previous callback for the same key, pass $code=undef to remove:
+    <pre>
+     $code-&gt;( $tickit, $key )
+    </pre>
+    </dd>
+    <dt><a href="#Tickit-set_root_widget">set_root_widget</a>(<br> $widget<br> )</dt>
+    <dd class="even">
+    Sets the root widget for the application's display. This must be a
+    subclass of Tickit::Widget.
+    <dt><a href="#Tickit-setup_term">setup_term</a></dt>
+    <dd class="odd">
+    Set up the screen and generally prepare to start running
+    <dt><a href="#Tickit-teardown_term">teardown_term</a></dt>
+    <dd class="even">
+    Shut down the screen after running
+
+    <dt><a href="#Tickit-tick">tick</a></dt>
+    <dd class="odd">
+    Run a single round of IO events. Does not call "setup_term" or
+    "teardown_term".
+
+    <dt><a href="#Tickit-run">run</a></dt>
+    <dd class="even">
+    Calls the "setup_term" method, then processes IO events until stopped,
+    by the "stop" method, "SIGINT", "SIGTERM" or the "Ctrl-C" key. Then runs
+    the "teardown_term" method, and returns.
+
+    <dt><a href="#Tickit-stop">stop</a></dt>
+    <dd class="odd">
+    Causes a currently-running "run" method to stop processing events and
+    return.
+   </dl>
+  </div>
+  </div>
+  <div class="module" id="Tickit-Style">
+   <div class="module-inner">
+   <h2>Tickit::Style</h2>
+   <pre>
+     WidgetClass.styleclass:tag {
+       key1: "value 1";
+       key2: 123;
+       key3: true;
+       &lt;Enter&gt;: activate;
+     }
+   </pre>
+   <h3>SUBCLASSING</h3>
+   <p>
+    If a Widget class is subclassed and the subclass does not declare "use
+    Tickit::Style" again, the subclass will be transparent from the point of
+    view of style. Any style applied to the base class will apply equally to
+    the subclass, and the name of the subclass does not take part in style
+    decisions.
+   <p>
+    If the subclass does "use Tickit::Style" again then the new subclass
+    will be a distinct widget type for style purposes, and it will require
+    its own new set of base style definitions.
+   <h3>FUNCTIONS</h3>
+   <dl>
+  <dt>style_definition( $tags, %definition )</dt>
+  <dd class="even">
+    In addition to any loaded stylesheets, the widget class itself can
+    provide style information, via the "style_definition" function. It
+    provides a definition equivalent to a stylesheet definition with no
+    style class, optionally with a single set of tags. To supply no tags,
+    use the special string "base".
+
+     style_definition base =&gt;
+        key1 =&gt; "value",
+        key2 =&gt; 123;
+
+    To provide definitions with tags, use the colon-prefixed notation.
+
+     style_definition ':active' =&gt;
+        key3 =&gt; "value";
+
+  <dt>style_reshape_keys( @keys )</dt>
+  <dd class="odd">
+    Declares that the given list of keys are somehow responsible for
+    determining the shape of the widget. If their values are changed, the
+    "reshape" method is called.
+
+  <dt>style_reshape_textwidth_keys( @keys )</dt>
+  <dd class="even">
+    Declares that the given list of keys contain text, the "textwidth()" of
+    which is used to determine the shape of the widget. If their values are
+    changed such that the "textwidth()" differs, the "reshape" method is
+    called.
+
+  <dt>style_redraw_keys( @keys )</dt>
+  <dd class="odd">
+    Declares that the given list of keys are somehow responsible for
+    determining the look of the widget, but in a way that does not determine
+    the size. If their values are changed, the "redraw" method is called.
+
+    Between them these three methods may help avoid "Tickit::Widget" classes
+    from needing to override the "on_style_changed_values" method.
+
+   </dl>
+   <h3>ADDITIONAL FUNCTIONS</h3>
+   <p>These must be fully-qualified with Tickit::Style::</p>
+   <dl>
+  <dt>load_style( $string )</dt>
+  <dd class="even">
+    Loads definitions from a stylesheet given in a string.
+
+    Definitions will be merged with existing definitions in memory, with new
+    values overwriting existing values.
+
+  <dt>load_style_file( $path )</dt>
+  <dd class="odd">
+    Loads definitions from a stylesheet file given by the path.
+
+    Definitions will be merged the same way as "load_style".
+
+  <dt>on_style_load( \&code )</dt>
+  <dd class="even">
+    Adds a CODE reference to be invoked after either "load_style" or
+    "load_style_file" are called. This may be useful to flush any caches or
+    invalidate any state that depends on style information.
+
+   </dl>
+  </div>
+  </div>
+ </body>
+</html>
+
