@@ -18,13 +18,14 @@ widgets.
 | Tickit::Widget::Placegrid      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Progressbar    | self           |       |      |           |       |     |
 | Tickit::Widget::RadioButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Scroller       | self           | 0.32  | 0.07 |           | Still using RenderContext | C   |
+| Tickit::Widget::Scroller       | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::ScrollBox      | self           | 0.32  | 0.33 | Cont 1    |       | cR  |
 | Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
+| Tickit::Widget::Spinner        | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Tabbed         | self           | 0.32  | 0.33 | (no)      |       | cR  |
-| Tickit::Widget::Table          | self           |       |      |           |       |     |
+| Tickit::Widget::Table          | self           | 0.32  | 0.32 | Cont      |       | cR  |
 | Tickit::Widget::Tree           | self           |       |      |           |       | C   |
 | Tickit::Widget::VBox           | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
 | Tickit::Widget::VSplit         | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
