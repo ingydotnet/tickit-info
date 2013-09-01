@@ -1,0 +1,690 @@
+[%
+module_list = [ {
+ name => 'Tickit::Window',
+ section => [ {
+  title => 'Mouse events',
+  content => [ {
+   name => 'press',
+   description => 'A mouse button has been pressed down on this cell',
+  }, {
+   name => 'drag_start',
+   description => 'The mouse was moved while a button was held, and was initially in the given cell',
+  }, {
+   name => 'drag',
+   description => 'The mouse was moved while a button was held, and is now in the given cell',
+  }, {
+   name => 'drag_outside',
+   description => 'The mouse was moved outside of the window that handled the "drag_start" event, and is still being dragged.'
+  }, {
+   name => 'drag_drop',
+   description => 'A mouse button was released after having been moved, while in the given cell',
+  }, {
+   name => 'drag_stop',
+   description => 'The drag operation has finished',
+  }, {
+   name => 'release',
+   description => 'A mouse button was released after being pressed'
+  } ],
+ } ],
+ methods => [ {
+  name => 'make_sub',
+  params => '$top, $left, $lines, $cols',
+  description => 'Constructs a new sub-window of the given geometry, and places it at the end of the child window list; below any other siblings.', 
+ }, {
+  name => 'make_hidden_sub',
+  params => '$top, $left, $lines, $cols',
+  description => 'Constructs a new sub-window like <a href="#make_sub">make_sub</a>, but the window starts initially hidden. This avoids having to call <a href="#hide">hide</a> separately afterwards.', 
+ }, {
+  name => 'make_float',
+  params => '$top, $left, $lines, $cols',
+  description => 'Constructs a new sub-window of the given geometry, and places it at the start of the child window list; above any other siblings.', 
+ }, {
+  name => 'make_popup',
+  params => '$top, $left, $lines, $cols',
+  description => 'Constructs a new floating popup window starting at the given coordinates relative to this window, with root window as parent',
+ }, {
+  name => 'raise_to_front<br>raise<br>lower<br>lower_to_back',
+  description => 'Moves the order of the window in its parent relative to its siblings.',
+ }, {
+  name => 'close',
+  description => 'Removes the window from its parent, clearing event handlers, recursively closing any child windows',
+ }, {
+  name => 'show',
+  description => 'Makes the window visible, will invoke the <a href="#on_expose">on_expose</a> handler',
+ }, {
+  name => 'hide',
+       description => 'Makes the window invisible',
+ }, {
+  name => 'resize',
+  params => '$lines, $cols',
+       description => 'Change the size of the window.',
+ }, {
+  name => 'reposition',
+  params => '$top, $left',
+  description => 'Move the window relative to its parent.',
+ }, {
+  name => 'change_geometry',
+  params => '$top, $left, $lines, $cols',
+  description => 'A combination of "resize" and "reposition", to atomically change all the coordinates of the window.',
+ }, {
+  name => 'set_on_geom_changed',
+  params => '$on_geom_changed',
+  description => 'Set the callback to invoke whenever the window is resized or repositioned, will be passed the window object', 
+ }, {
+  name => 'set_on_key',
+  params => '$on_key',
+  description => 'Set the callback to invoke whenever a key is pressed while this window or children have the input focus, will be passed type, str and mod',
+ }, {
+  name => 'set_on_mouse',
+  params => '$on_mouse',
+       description => "Set the callback to invoke whenever a mouse event is received within the window's rectangle.",
+ }, {
+  name => 'set_on_expose',
+  params => '$on_expose',
+       description => 'Set the callback to invoke whenever a region of the window is exposed, will be passed the window and Tickit::Rect representing the exposed region.',
+ }, {
+  name => 'expose',
+  params => '$rect',
+  description => "Marks the given region of the window as having been exposed",
+ }, {
+  name => 'set_on_focus',
+  params => '$on_refocus',
+  description => 'Set the callback to invoke whenever the window gains or loses focus, will be passed the window and true/false', 
+ }, {
+  name => 'set_expose_after_scroll',
+  params => '$expose_after_scroll',
+  description => 'If set to a true value, the <a href="#scrollrect">scrollrect</a> method will expose the region of the window that requires redrawing',
+ }, {
+  name => 'set_pen',
+  params => '$pen',
+  description => 'Replace the current Tickit::Pen object for this window with a new one - undef means new blank pen',
+ }, {
+  name => 'getpenattr',
+  params => '$attr',
+  description => 'Returns a single attribue from the current pen',
+ }, {
+  name => 'get_effective_pen',
+  description => 'Returns a new Tickit::Pen containing the effective pen attributes for the window, combined by those of all its parents.', 
+ }, {
+  name => 'get_effective_penattr',
+  params => '$attr',
+       description => "Returns the effective value of a pen attribute. This will be the value of this window's attribute if set, or the effective value of the attribute from its parent.",
+ }, {
+  name => 'goto',
+  params => '$line, $col',
+  description => 'Moves the cursor to the given 0-based position within the window.',
+ }, {
+  name => 'print',
+  params => '$text, $pen | %attrs',
+  description => 'Print the given text to the terminal at the current cursor position, returning a Tickit::StringPos object giving the total count of string printed',
+ }, {
+  name => 'erasech',
+  params => '$count, $moveend, $pen | %attrs',
+  description => 'Erase $count columns forwards. If $moveend is true, the cursor will be placed at the end of the erased region. Returns a Tickit::StringPos object.',
+ }, {
+  name => 'clearrect',
+  params => '$rect, $pen | %attrs',
+  description => 'Erase the content of the window within the given Tickit::Rect.',
+ }, {
+  name => 'scrollrect',
+  params => '$top, $left, $lines, $cols, $downward, $rightward, $pen | %attrs',
+       description => 'Attempt to scroll the rectangle of the window defined by the first four parameters by an amount given by the latter two.',
+ }, {
+  name => 'scroll',
+  params => '$downward, $rightward',
+  description => 'A shortcut for calling "scrollrect" on the entire region of the window.',
+ }, {
+  name => 'cursor_at',
+  params => '$line, $col',
+  description => 'Sets the position in the window at which the terminal cursor will be placed when this window has focus, see also <a href="#take_focus">take_focus</a>.',
+ }, {
+  name => 'cursor_shape',
+  params => '$shape',
+  description => 'Sets the shape that the terminal cursor will have if this window has focus. See <a href="#">TERMCTL_CURSORSHAPE_*</a> constants in Tickit::Term.',
+ }, {
+  name => 'take_focus',
+  description => 'Causes this window to take the input focus, and updates the cursor position to the stored active position given by <a href="#cursor_at">cursor_at</a>.',
+ }, {
+  name => 'focus',
+  params => '$line, $col',
+  description => 'A convenient shortcut combining "cursor_at" with "take_focus"; setting the focus cursor position and taking the input focus.', 
+ }, {
+  name => 'restore',
+  description => 'Restore the state of the terminal to its idle state. Places the cursor back at the focus position, and restores the pen.',
+ }, {
+  name => 'clearline',
+  params => '$line',
+  description => 'Erase the entire content of one line of the window',
+ }, {
+  name => 'clear',
+  description => 'Erase the entire content of the window and reset it to the current background colour.',
+ } ],
+ attributes => [ {
+  name => 'parent',
+  description => 'Returns the parent window; i.e. the window on which "make_sub" or "make_float" was called to create this one',
+ }, {
+  name => 'subwindows',
+  description => 'Returns a list of the subwindows of this one.  They are returned in order, highest first.',
+ }, {
+  name => 'root',
+  description => 'Returns the root window',
+ }, {
+  name => 'term',
+  description => 'Returns the Tickit::Term instance of the terminal on which this window lives. Returns the Tickit instance with which this window is associated.', 
+ }, {
+  name => 'is_visible',
+  description => 'Returns true if the window is currently visible.',
+ }, {
+  name => 'is_focused',
+  description => 'Returns true if this window currently has the input focus',
+ }, {
+  name => 'rect',
+  description => "Returns a Tickit::Rect containing representing the window's extent relative to its parent",
+ }, {
+  name => 'top<br>bottom<br>left<br>right<br>',
+  description => 'Position relative to parent',
+ }, {
+  name => 'abs_top<br>abs_left',
+  description => 'Top left co-ordinate in the window (from root window)',
+ }, {
+  name => 'cols<br>lines',
+  description => 'Window size',
+ }, {
+  name => 'pen',
+  description => 'Returns the current Tickit::Pen object associated with this window',
+ } ],
+},
+
+
+{
+ name => 'Tickit::Widget',
+ attributes => [ {
+  name => 'style_classes',
+  description => 'Returns a list of the style class names this Widget has.',
+ }, {
+  name => 'get_style_text',
+  description => 'A shortcut to calling "get_style_values" for a single key called "text".',
+ }, {
+  name => 'pen',
+  description => "Returns the widget's Tickit::Pen. Modifying an attribute of the returned object results in the widget being redrawn if the widget has a window associated.", 
+ }, {
+  name => 'window', 
+  description => 'Returns the current window of the widget, if one has been set using "set_window".',
+ }, {
+  name => 'parent',
+  description => 'Returns the current container widget',
+ } ],
+ methods => [ {
+  name => 'focus_next_before<br>focus_next_after',
+  description => 'Requests the focus move to the next or previous focusable widget in display order.',
+ }, {
+  name => 'set_style_tag',
+  params => '$tag, $value',
+  description => 'Sets the (boolean) state of the named style tag, see also "style_reshape_keys", "style_reshape_textwidth_keys" and "style_redraw_keys"', 
+ }, {
+  name => 'get_style_values',
+  params => '@keys',
+  description => 'Returns a list of values for the given keys of the currently-applied style. For more detail see the Tickit::Style documentation. Returns just one value in scalar context.',
+ }, {
+  name => 'get_style_pen',
+  params => '$prefix',
+  description => 'A shortcut to calling "get_style_values" to collect up the pen attributes, and form a Tickit::Pen::Immutable object from them, using ${prefix}_* if a prefix is given', 
+ }, {
+  name => 'set_style',
+  params => '%defs',
+  description => 'Apply the given hash to the widget style.',
+ }, {
+  name => 'set_window',
+       params => '$window',
+       description => 'Sets the Tickit::Window for the widget to draw on, or undef to remove the current window',
+ }, {
+  name => 'set_parent',
+       params => '$parent',
+       description => 'Sets the parent widget; pass "undef" to remove the parent. $parent, if defined, must be a subclass of Tickit::ContainerWidget.', 
+ }, {
+  name => 'resized',
+       description => 'Provided for subclasses to call when their size requirements have or may have changed. Informs the parent that the widget may require a differently-sized window.',
+ }, {
+  name => 'redraw',
+       description => 'Mark this widget as needing a redraw',
+ }, {
+  name => 'set_pen',
+       params => '$pen',
+       description => 'Set a new "Tickit::Pen" object. This is stored by reference; changes to the pen will be reflected in the rendered look of the widget. The same pen may be shared by more than one widget; updates will affect them all.', 
+ }, {
+  name => 'take_focus',
+       description => "Calls take_focus on the Widget's underlying Window, if present, or stores that the window should take focus when one is eventually set by set_window",
+ } ],
+ subclass_methods => [ {
+  name => 'render_to_rb',
+  params => '$renderbuffer, $rect',
+  description => "Called to redraw the widget's content to the given Tickit::RenderBuffer. Will be passed the clipping rectangle region to be rendered; the method does not have to render any content outside of this region.",
+ }, {
+  name => 'reshape',
+  description => 'Optional. Called after the window geometry is changed. Useful to distribute window change sizes to contained child widgets.', 
+ }, {
+  name => 'lines<br>',
+  description => 'Called to enquire on the requested window for this widget. It is possible that the actual allocated window may be larger, or smaller than this amount.', 
+ }, {
+  name => 'window_gained',
+  params => '$window',
+  description => 'Optional. Called by "set_window" when a window has been set for this widget.',
+ }, {
+  name => 'window_lost',
+  params => '$window',
+  description => 'Optional. Called by "set_window" when "undef" has been set as the window for this widget. The old window object is passed in.', 
+ }, {
+  name => 'on_key',
+       params => '...',
+       description => 'Optional. If provided, this method will be set as the "on_key" callback for any window set on the widget. By providing this method a subclass can implement widgets that respond to user input. It receives the same arguments as the underlying window "on_key" event.',
+ }, {
+      name => 'on_mouse',
+      params => '...',
+      description => 'Optional. If provided, this method will be set as the "on_mouse" callback for any window set on the widget. By providing this method a subclass can implement widgets that respond to user input. If receives the same arguments as the underlying window "on_mouse" event.',
+ }, {
+      name => 'on_style_changed_values',
+      params => '%values',
+      description => 'Optional. Will be called by <a href="#set_style_tag">set_style_tag</a> when style keys may have changed values. Will be passed as name => [old,new]. See <a href="#style_reshape_keys">style_reshape_keys</a>, <a href="#style_reshape_textwidth_keys>style_reshape_textwidth_keys</a> and <a href="#style_redraw_keys">style_redraw_keys</a>.',
+ }, {
+      name => 'CAN_FOCUS',
+      description => 'Optional, normally false. If this constant method returns a true value, the widget is allowed to take focus using the "take_focus" method. It will also take focus automatically if it receives a mouse button 1 press event.',
+ }, {
+      name => 'KEYPRESSES_FROM_STYLE',
+      description => 'Optional, normally false. If this constant method returns a true value, then &lt;key_$key&gt; will be invoked if found, instead of on_key ("&lt;Space&gt;" can be used for the space key)',
+ } ],
+}, {
+ name => 'Tickit',
+ constructor => {
+  params => [ {
+   name => 'term_in',
+   description => 'IO handle for terminal input. Will default to "STDIN"',
+  }, {
+   name => 'term_out',
+   description => 'IO handle for terminal output. Will default to "STDOUT"',
+  }, {
+   name => 'root',
+   description => 'If defined, sets the root widget using "set_root_widget" to the one specified.',
+  } ],
+ }
+ attributes => [ {
+  name => 'term',
+   description => 'Returns the underlying Tickit::Term object',
+ }, {
+   name => 'cols',
+   description => 'Number of columns on the terminal',
+ }, {
+   name => 'lines',
+   description => 'Query the current size of the terminal. Will be cached and updated on receipt of "SIGWINCH" signals.',
+ }, {
+   name => 'rootwin',
+   description => 'Returns the root Tickit::Window.',
+ } ],
+ methods => [ {
+  name => 'later',
+  params => '$code',
+  description => 'Runs the given CODE reference at some time soon in the future. It will not be invoked yet, but will be invoked at some point before the next round of input events are processed.',
+ }, {
+  name => 'timer',
+  params => '$mode, $amount, $code',
+  description => 'Runs the given CODE reference at some fixed point in time in the future. $mode must be either the string "at", or "after"; and specifies that $amount gives either the absolute epoch time, or the delay relative to now, respectively. Fractions are supported to a resolution of microseconds.  <pre>
+timer(at =&gt; $epoch, $code )
+timer(after =&gt; $delay, $code )</pre>',
+ }, {
+   name => 'bind_key',
+   params => '$key, $code',
+   description => 'Installs a callback to invoke if the given key is pressed, overwriting any previous callback for the same key, pass $code=undef to remove: <pre>$code-&gt;( $tickit, $key )</pre>',
+ }, {
+   name => 'set_root_widget',
+   params => '$widget',
+   description => "Sets the root widget for the application's display. This must be a subclass of Tickit::Widget.",
+ }, {
+  name => 'setup_term', 
+  description => 'Set up the screen and generally prepare to start running', 
+ }, {
+  name => 'teardown_term',
+
+  description => 'Shut down the screen after running',
+ }, {
+
+  name => 'tick',
+
+  description => 'Run a single round of IO events. Does not call "setup_term" or "teardown_term".', 
+ }, {
+  name => 'run',
+
+  description => 'Calls the "setup_term" method, then processes IO events until stopped, by the "stop" method, "SIGINT", "SIGTERM" or the "Ctrl-C" key. Then runs the "teardown_term" method, and returns.', 
+ }, {
+  name => 'stop',
+
+  description => 'Causes a currently-running "run" method to stop processing events and return.',
+ } ],
+}, {
+ name => 'Tickit::RenderBuffer',
+ constructor => {
+  params => [ {
+   name => 'lines',
+   description => 'number of lines in the buffer area',
+  }, {
+   name => 'cols',
+   description => 'number of cols in the buffer area',
+  } ],
+ },
+ section => [ {
+  title => 'Line types',
+  content => [ {
+   name => 'LINE_SINGLE',
+   description => 'A single, thin line',
+  }, {
+   name => 'LINE_DOUBLE',
+   description => 'A pair of double, thin lines',
+  }, {
+   name => 'LINE_THICK',
+   description => 'A single, thick line',
+  } ],
+ }, {
+  title => 'Cap types',
+  content => [ {
+   name => 'CAP_START',
+   description => 'The start of the line fills the entire cell',
+  }, {
+   name => 'CAP_END',
+   description => 'Line end fills the entire cell',
+  }, {
+   name => 'CAP_BOTH',
+   description => 'Start and end both fill their respective cells',
+  } ],
+ } ],
+ methods => [ {
+  name => 'lines',
+  name => 'cols',
+  description => 'Returns the size of the buffer area',
+ }, {
+  name => 'line',
+  name => 'col',
+  description => 'Returns the current position of the virtual cursor, or "undef" if it is not set.',
+ }, {
+  name => 'save',
+  description => 'Pushes a new state-saving context to the stack, which can later be returned to by the "restore" method.',
+ }, {
+  name => 'savepen',
+  description => 'Like <a href="#save">save</a> but stores the pen only, restore with <a href="#restore">restore</a>.',
+ }, {
+  name => 'restore',
+  description => 'Pops and restores a saved state previously created with "save".',
+ }, {
+  name => 'clip',
+  params => '$rect',
+  description => 'Restricts future drawing operations to the given clipping rectangle (effect is cumulative).',
+ }, {
+  name => 'translate',
+  params => '$downward, $rightward',
+  description => 'Applies a translation to all future drawing operations',
+ }, {
+  name => 'reset',
+  description => 'Removes any pending changes, undefines the virtual cursor position, resets the clipping rectangle, and clears the stack of saved state.', 
+ }, {
+  name => 'clear',
+  params => '$pen',
+  description => 'Resets every cell in the buffer to an erased state. A shortcut to calling "erase_at" for every line.', 
+ }, {
+  name => 'goto',
+  params => '$line, $col',
+  description => 'Sets the position of the virtual cursor.',
+ }, {
+  name => 'setpen',
+  params => '$pen',
+  description => 'Sets the rendering pen to use for drawing operations', 
+ }, {
+  name => 'skip_at',
+  params => '$line, $col, $len',
+  description => 'Sets the range of cells given to a skipped state. No content will be drawn here, nor will any content existing on the window be erased. Initially, or after calling "reset", all cells are set to this state.', 
+ }, {
+  name => 'skip',
+  params => '$len', 
+  description => 'Sets the range of cells at the virtual cursor position to a skipped state, and updates the position.',
+ }, {
+  name => 'skip_to',
+  params => '$col',
+  description => 'Sets the range of cells from the virtual cursor position until before the given column to a skipped state, and updates the position to the column. If the position is already past this column then the cursor is moved backwards and no buffer changes are made.',
+ }, {
+  name => 'text_at',
+  params => '$line, $col, $text, $pen',
+  description => 'Sets the range of cells starting at the given position, to render the given text in the given pen.',
+ }, {
+  name => 'text',
+  params => '$text, $pen',
+  description => 'Sets the range of cells at the virtual cursor position to render the given text in the given pen, and updates the position.',
+ }, {
+  name => 'erase_at',
+  params => '$line, $col, $len, $pen',
+  description => 'Sets the range of cells given to erase with the given pen.',
+ }, {
+  name => 'erase',
+  params => '$len, $pen',
+  description => 'Sets the range of cells at the virtual cursor position to erase with the given pen, and updates the position.',
+ }, {
+  name => 'erase_to',
+  params => '$col, $pen',
+  description => 'Erase all cells to the target column, leaving the cursor at that column',
+ }, {
+  name => 'eraserect',
+  params => '$rect, $pen',
+  description => 'Sets the range of cells given by the rectangle to erase with the given pen.',
+ }, {
+  name => 'hline_at',
+  params => '$line, $startcol, $endcol, $style, $pen, $caps',
+  description => 'Draws a horizontal line between the given columns (both are inclusive), in the given line style, with the given pen.',
+ }, {
+
+  name => 'vline_at',
+  params => '$startline, $endline, $col, $style, $pen, $caps',
+
+  description => 'Draws a vertical line between the centres of the given lines (both are inclusive), in the given line style, with the given pen.',
+ }, {
+
+  name => 'char_at',
+  params => '$line, $col, $codepoint, $pen', 
+  description => 'Sets the given cell to render the given Unicode character (as given by codepoint number, not character string) in the given pen',
+ }, {
+
+  name => 'flush_to_window',
+  params => '$win',
+
+  description => 'Renders the stored content to the given Tickit::Window. After this, the buffer will be cleared and reset back to initial state.',
+ } ]
+}, {
+ name => 'Tickit::Style',
+ section => [ {
+  title => 'Style files',
+  example => '
+WidgetClass.styleclass:tag {
+ key1: "value 1";
+ key2: 123;
+ key3: true;
+ &lt;Enter&gt;: activate;
+}',
+ }, {
+  title => 'Subclassing',
+  description => 'If a Widget class is subclassed and the subclass does not declare "use Tickit::Style" again, the subclass will be transparent from the point of view of style. Any style applied to the base class will apply equally to the subclass, and the name of the subclass does not take part in style decisions.<br>If the subclass does "use Tickit::Style" again then the new subclass will be a distinct widget type for style purposes, and it will require its own new set of base style definitions.',
+  content => [ {
+      name => 'style_definition',
+      params => '$tags, %definition',
+      description => 'In addition to any loaded stylesheets, the widget class itself can provide style information, via the "style_definition" function. It provides a definition equivalent to a stylesheet definition with no style class, optionally with a single set of tags. To supply no tags, use the special string "base"',
+  }, {
+      name => 'style_reshape_keys',
+      params => '@keys',
+      description => 'Declares that the given list of keys are somehow responsible for determining the shape of the widget.  If their values are changed, the "reshape" method is called.',
+ }, {
+      name => 'style_reshape_textwidth_keys',
+      params => '@keys',
+      description => 'Declares that the given list of keys contain text, the "textwidth()" of which is used to determine the shape of the widget. If their values are changed such that the "textwidth()" differs, the "reshape" method is called.',
+ }, {
+      name => 'style_redraw_keys',
+      params => '@keys',
+      description => 'Declares that the given list of keys are somehow responsible for determining the look of the widget, but in a way that does not determine the size. If their values are changed, the "redraw" method is called. Between them these three methods may help avoid "Tickit::Widget" classes from needing to override the "on_style_changed_values" method.',
+  } ]
+ }, {
+  title => 'Additional functions',
+  description => 'These must be fully-qualified with Tickit::Style::',
+  content => [ {
+   name => 'load_style',
+   params => '$string',
+   description => 'Loads definitions from a stylesheet given in a string. Definitions will be merged with existing definitions in memory, with new values overwriting existing values.',
+  }, {
+   name => 'load_style_file',
+   params => '$path',
+   description => 'Loads definitions from a stylesheet file given by the path. Definitions will be merged the same way as "load_style".',
+  }, {
+   name => 'on_style_load',
+   params => '$code',
+   description => 'Adds a CODE reference to be invoked after either "load_style" or "load_style_file" are called. This may be useful to flush any caches or invalidate any state that depends on style information.',
+  } ],
+ } ],
+} ];
+-%]
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Tickit cheatsheet</title>
+  <style type="text/css">
+* { padding: 0; margin: 0; }
+body { font-size: 85%; background: #ccc; font-family: 'Roboto Light','Helvetica Neue', Helvetica, Arial, serif;padding:1em;}
+h2 { background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); color: #32f; border-radius: 15px 15px 0 0; padding: 0 0.5em 0 0.5em; text-shadow: -1px -1px 1px rgba(255,255,255,0.3);border-bottom:none}
+h3 { background:linear-gradient(to right, rgba(240,240,180,0.1) 0%, rgba(240,240,180,0.75) 100%); padding: 0.25em 0.5em 0.25em 0.5em; }
+dt { float: left; clear: both; width: 10em; display: block; font-family: Inconsolata,monospace; text-shadow: 1px 1px 1px rgba(80,140,140,0.7); padding: 0 0.5em 0 0.5em;}
+dt a { font-family: Inconsolata,monospace; color: blue; text-decoration: none; }
+dd { padding: 0em 0.5em 0em 10em; display: block; text-align: justify; }
+.odd { background: #e0e0e0; }
+/* .even { background: rgba(240,240,180,0.35) } */
+dl { overflow: auto; }
+table { margin: 0 auto; }
+pre { font-family: Inconsolata,monospace; }
+div.widget-column { float: left;width: 33%; }
+div.module-inner { margin: 0.25em; border-radius: 15px; background: #eee; box-shadow:1px 1px 2px 2px rgba(30,30,30,0.3);}
+th { vertical-align:middle; font-weight: normal; text-align: right; padding-left: 0.5em; padding-right: 1em; color: blue;font-family: Inconsolata,monospace; text-shadow: 1px 1px 1px rgba(80,140,140,0.7); font-size:85%; }
+.params { text-align: left; padding-left: 0.5em; color: red;font-family: Inconsolata,monospace; text-shadow: 1px 1px 1px rgba(80,140,140,0.7); font-size:85%;}
+td { vertical-align:middle; text-align: justify; padding-right: 0.5em; text-shadow:1px 1px 1px rgba(40,40,40,0.3); }
+td a { text-decoration: none; font-family: Inconsolata,monospace;}
+pre { text-align: left; padding-left: 0.5em; color: black;font-family: Inconsolata,monospace; text-shadow: 1px 1px 1px rgba(80,140,140,0.7); font-size:85%;}
+pre { text-align: justify; padding-left: 0.5em; padding-right: 0.5em; }
+ </style>
+ <style type="text/css">
+@media only screen and (max-device-width: 480px) {
+ div.widget-column { float: none; width: 100%; }
+}
+ </style>
+ <style type="text/css" media="print">
+@page {
+ size: auto;
+ margin: 0mm;
+}
+.module { padding: 0.5em; }
+th, td, pre, .params { text-shadow: none; }
+div.module-inner { box-shadow: none; }
+  </style>
+</head>
+<body>
+[% FOREACH module IN module_list-%]
+ [% SWITCH loop.index; CASE [0,1,3] -%]
+  <div class="widget-column">
+ [% END -%]
+  <div class="module" id="[% module.name.replace('::', '-') %]">
+   <div class="module-inner">
+    <h2>[% module.name %]</h2>
+    [% IF module.constructor -%]
+    <h3>Constructor</h3>
+    <p>Takes the following named arguments:</p>
+    <table class="constructor">
+     <tbody>
+      [% FOREACH param IN module.constructor.params -%]
+      <tr>
+       <th scope="row">[% param.name %]</th>
+       <td>[% param.description %]</td>
+      </tr>
+      [% END -%]
+     </tbody>
+    </table>
+    [% END -%]
+    [% FOREACH section IN module.section -%]
+    <h3>[% section.title %]</h3>
+    [% IF section.description -%]
+    <p>[% section.description %]</h3>
+    [% END -%]
+    [% IF section.example -%]
+    <pre>[% section.example %]</pre>
+    [% END -%]
+    <table[% IF section.class %] class="[% section.class %]"[% END %]>
+     <tbody>
+      [% FOREACH param IN section.content -%]
+      <tr>
+       <th scope="row">
+        [% param.name %]
+        [% IF param.params -%]
+        <br>
+        <span class="params">[% param.params %]</span>
+        [% END -%]
+       </th>
+       <td>[% param.description %]</td>
+      </tr>
+      [% END -%]
+     </tbody>
+    </table>
+    [% END -%]
+    [% IF module.attributes -%]
+    <h3>Attributes</h3>
+    <table class="attributes">
+     <tbody>
+      [% FOREACH attr IN module.attributes -%]
+      <tr class="[% IF loop.index % 2 %]odd[% ELSE %]even[% END %]">
+       <th scope="row">[% attr.name %]</th>
+       <td scope="row">[% attr.description %]</td>
+      </tr>
+      [% END -%]
+     </tbody>
+    </table>
+    [% END -%]
+    [% IF module.methods -%]
+    <h3>Methods</h3>
+    <table class="attributes">
+     <tbody>
+      [% FOREACH method IN module.methods -%]
+      <tr class="[% IF loop.index % 2 %]odd[% ELSE %]even[% END %]">
+       <th scope="row">
+        [% method.name %]
+        [% IF method.params -%]
+        <br>
+        <span class="params">[% method.params %]</span>
+        [% END -%]
+       </th>
+       <td>[% method.description %]</td>
+      </tr>
+      [% END -%]
+     </tbody>
+    </table>
+    [% END -%]
+    [% IF module.subclass_methods -%]
+    <h3>Subclass Methods</h3>
+    <table class="attributes">
+     <tbody>
+      [% FOREACH method IN module.subclass_methods -%]
+      <tr class="[% IF loop.index % 2 %]odd[% ELSE %]even[% END %]">
+       <th scope="row">[% method.name %]</th>
+       <td>[% method.description %]</td>
+      </tr>
+      [% END -%]
+     </tbody>
+    </table>
+    [% END -%]
+   </div>
+  </div>
+ [% SWITCH loop.index; CASE [0,2,4] -%]
+  </div>
+ [% END -%]
+[% END -%]
+<div id="tickit-info">
+ <h1>Terminal Interface Construction Kit</h1>
+ <p>Wiki available at <a href="https://github.com/ingydotnet/tickit-info">https://github.com/ingydotnet/tickit-info</a></p>
+</div>
+</body>
+</html>
+
