@@ -21,7 +21,7 @@ widgets.
 | Tickit::Widget::Scroller       | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::ScrollBox      | self           | 0.32  | 0.33 | Cont 1    |       | cR  |
 | Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::SparkLine      | self           |       |      |           |       |     |
+| Tickit::Widget::SparkLine      | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Spinner        | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Statusbar      | self           | 0.32  | 0.33 |           |       | cR  |
