@@ -16,7 +16,7 @@ widgets.
 | Tickit::Widget::HSplit         | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
 | Tickit::Widget::Menu           | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Placegrid      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Progressbar    | self           |       |      |           |       |     |
+| Tickit::Widget::Progressbar    | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::RadioButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Scroller       | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::ScrollBox      | self           | 0.32  | 0.33 | Cont 1    |       | cR  |
