@@ -27,7 +27,7 @@ widgets.
 | Tickit::Widget::Statusbar      | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Tabbed         | self           | 0.32  | 0.33 | (no)      |       | cR  |
 | Tickit::Widget::Table          | self           | 0.32  | 0.32 | Cont      |       | cR  |
-| Tickit::Widget::Tree           | self           |       |      |           |       | C   |
+| Tickit::Widget::Tree           | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::VBox           | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
 | Tickit::Widget::VSplit         | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
 
