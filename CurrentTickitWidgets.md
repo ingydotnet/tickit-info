@@ -9,6 +9,7 @@ widgets.
 | Tickit::Widget::Box            | Tickit         | 0.32  | 0.33 | Cont 1    |       | cR  |
 | Tickit::Widget::Button         | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::CheckButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Decoration     | self           | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Entry          | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
 | Tickit::Widget::Frame          | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | cR  |
 | Tickit::Widget::GridBox        | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
