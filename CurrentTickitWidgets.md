@@ -3,35 +3,36 @@
 This document has pictures and thoughts of all the current Tickit.pm
 widgets.
 
-| Name                           | Source         | Style | RB   | Container | Notes | Exp |
-|--------------------------------|----------------|-------|------|-----------|-------|-----|
-| Tickit::Widget::Border         | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | cR  |
-| Tickit::Widget::Box            | Tickit         | 0.32  | 0.33 | Cont 1    |       | cR  |
-| Tickit::Widget::Button         | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::CheckButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Decoration     | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Entry          | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Frame          | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | cR  |
-| Tickit::Widget::GridBox        | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
-| Tickit::Widget::HBox           | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
-| Tickit::Widget::HSplit         | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
-| Tickit::Widget::Menu           | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Placegrid      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Progressbar    | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::RadioButton    | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Scroller       | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::ScrollBox      | self           | 0.32  | 0.33 | Cont 1    |       | cR  |
-| Tickit::Widget::SegmentDisplay | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::SparkLine      | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Spinner        | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Static         | Tickit         | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Statusbar      | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::Tabbed         | self           | 0.32  | 0.33 | (no)      |       | cR  |
-| Tickit::Widget::Table          | self           | 0.32  | 0.32 | Cont      |       | cR  |
-| Tickit::Widget::Table::Paged   | self           | 0.32  | 0.32 | Cont      |       | cR  |
-| Tickit::Widget::Tree           | self           | 0.32  | 0.33 |           |       | cR  |
-| Tickit::Widget::VBox           | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
-| Tickit::Widget::VSplit         | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
+| Name                             | Source         | Style | RB   | Container | Notes | Exp |
+|----------------------------------|----------------|-------|------|-----------|-------|-----|
+| Tickit::Widget::Border           | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | cR  |
+| Tickit::Widget::Box              | Tickit         | 0.32  | 0.33 | Cont 1    |       | cR  |
+| Tickit::Widget::Button           | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::CheckButton      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Decoration       | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Entry            | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Frame            | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | cR  |
+| Tickit::Widget::GridBox          | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
+| Tickit::Widget::HBox             | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
+| Tickit::Widget::HSplit           | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
+| Tickit::Widget::Layout::Relative | self           | 0.32  | 0.33 | Cont      |       | cR  |
+| Tickit::Widget::Menu             | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Placegrid        | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Progressbar      | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::RadioButton      | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Scroller         | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::ScrollBox        | self           | 0.32  | 0.33 | Cont 1    |       | cR  |
+| Tickit::Widget::SegmentDisplay   | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::SparkLine        | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Spinner          | Tickit-Widgets | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Static           | Tickit         | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Statusbar        | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::Tabbed           | self           | 0.32  | 0.33 | (no)      |       | cR  |
+| Tickit::Widget::Table            | self           | 0.32  | 0.32 | Cont      |       | cR  |
+| Tickit::Widget::Table::Paged     | self           | 0.32  | 0.32 | Cont      |       | cR  |
+| Tickit::Widget::Tree             | self           | 0.32  | 0.33 |           |       | cR  |
+| Tickit::Widget::VBox             | Tickit         | 0.32  | 0.33 | Cont      |       | cR  |
+| Tickit::Widget::VSplit           | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | cR  |
 
 Exp == Experiments:
   C: CLEAR_BEFORE_RENDER => 0
