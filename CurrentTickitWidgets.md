@@ -6,14 +6,14 @@ widgets.
 | Name                             | Source         | Style | RB   | Container | Notes | Exp |
 |----------------------------------|----------------|-------|------|-----------|-------|-----|
 | Tickit::Widget::Border           | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | R   |
-| Tickit::Widget::Box              | Tickit         | 0.32  | 0.33 | Cont 1    |       | R   |
+| Tickit::Widget::Box              | Tickit         | 0.32  | 0.33 | Cont 1    |       | RS  |
 | Tickit::Widget::Button           | Tickit-Widgets | 0.32  | 0.33 |           |       | R   |
 | Tickit::Widget::CheckButton      | Tickit-Widgets | 0.32  | 0.33 |           |       | R   |
 | Tickit::Widget::Decoration       | self           | 0.32  | 0.33 |           |       | R   |
 | Tickit::Widget::Entry            | Tickit-Widgets | 0.32  | 0.33 |           |       | R   |
 | Tickit::Widget::Frame            | Tickit-Widgets | 0.32  | 0.33 | Cont 1    |       | R   |
 | Tickit::Widget::GridBox          | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | R   |
-| Tickit::Widget::HBox             | Tickit         | 0.32  | 0.33 | Cont      |       | R   |
+| Tickit::Widget::HBox             | Tickit         | 0.32  | 0.33 | Cont      |       | RS  |
 | Tickit::Widget::HSplit           | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | R   |
 | Tickit::Widget::Layout::Relative | self           | 0.32  | 0.33 | Cont      |       | R   |
 | Tickit::Widget::Menu             | self           | 0.32  | 0.33 |           |       | R   |
@@ -31,11 +31,12 @@ widgets.
 | Tickit::Widget::Table            | self           | 0.32  | 0.32 | Cont      |       | R   |
 | Tickit::Widget::Table::Paged     | self           | 0.32  | 0.32 | Cont      |       | R   |
 | Tickit::Widget::Tree             | self           | 0.32  | 0.33 |           |       | R   |
-| Tickit::Widget::VBox             | Tickit         | 0.32  | 0.33 | Cont      |       | R   |
+| Tickit::Widget::VBox             | Tickit         | 0.32  | 0.33 | Cont      |       | RS  |
 | Tickit::Widget::VSplit           | Tickit-Widgets | 0.32  | 0.33 | Cont      |       | R   |
 
 Exp == Experiments:
   R: render_to_rb
+  S: container using ->requested_* for sizing
 
 Tickit.pm seems to be the best candidate for the future of
 interactive terminal apps, but currently lacks the basic widgets to
