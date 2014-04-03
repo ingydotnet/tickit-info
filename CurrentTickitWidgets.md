@@ -20,14 +20,14 @@ widgets.
 | Tickit::Widget::Placegrid        | Tickit-Widgets | 0.43   | 0.42 |           |       |     |
 | Tickit::Widget::Progressbar      | self           | 0.43   | 0.42 |           |       |     |
 | Tickit::Widget::RadioButton      | Tickit-Widgets | 0.43   | 0.42 |           |       |     |
-| Tickit::Widget::Scroller         | self           | 0.43   |      |           |       |     |
+| Tickit::Widget::Scroller         | self           | 0.43   | 0.42 |           |       |     |
 | Tickit::Widget::ScrollBox        | self           | 0.43   | 0.42 | Cont 1    |       |     |
 | Tickit::Widget::SegmentDisplay   | self           | 0.43   | 0.42 |           |       |     |
 | Tickit::Widget::SparkLine        | self           | 0.43   | 0.42 |           |       |     |
 | Tickit::Widget::Spinner          | Tickit-Widgets | 0.43   | 0.42 |           |       |     |
 | Tickit::Widget::Static           | Tickit         | 0.43   | 0.42 |           |       |     |
 | Tickit::Widget::Statusbar        | self           | 0.43   | 0.42 |           |       |     |
-| Tickit::Widget::Tabbed           | self           | 0.43   |      | (no)      |       |     |
+| Tickit::Widget::Tabbed           | self           | 0.43   | 0.42 | (no)      |       |     |
 | Tickit::Widget::Table            | self           | XXX    |      | Cont      |       |     |
 | Tickit::Widget::Table::Paged     | self           | 0.43   | 0.42 | Cont      |       |     |
 | Tickit::Widget::Tree             | self           | 0.43   | 0.42 |           | [3]   |     |
