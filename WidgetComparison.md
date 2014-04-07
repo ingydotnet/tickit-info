@@ -8,11 +8,13 @@ This document indicates (near) equivalents between UI widgets in Tickit and othe
 | Box               | -                  | (GtkAlignment)        |
 | Button            | Button             | GtkButton             |
 | CheckButton       | -                  | GtkCheckButton        |
+| Decoration        | -                  | -                     |
 | Entry             | Entry              | GtkEntry              |
 | Frame             | Border             | GtkFrame              |
 | GridBox           | -                  | GtkGrid               |
 | HBox              | HBox               | GtkBox                |
 | HSplit            | HPaned             | GtkPaned              |
+| Layout::Relative  | -                  | -                     |
 | Menu              | -                  | GtkMenu               |
 | Placegrid         | -                  | -                     |
 | Progressbar       | {H,V}ProgressBar   | GtkProgressBar        |
@@ -26,6 +28,7 @@ This document indicates (near) equivalents between UI widgets in Tickit and othe
 | Statusbar         | -                  | GtkStatusbar          |
 | Tabbed            | -                  | GtkNotebook           |
 | Table             | -                  | GtkTreeView [*]       |
+| Table::Paged      | -                  | GtkTreeView [*]       |
 | Tree              | -                  | GtkTreeView           |
 | VBox              | VBox               | GtkBox                |
 | VSplit            | VPaned             | GtkPaned              |
