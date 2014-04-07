@@ -28,7 +28,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::Spinner          | Tickit-Widgets | 0.44   | 0.42 |           |       |     |
 | Tickit::Widget::Static           | Tickit         | 0.44   | 0.42 |           |       |     |
 | Tickit::Widget::Statusbar        | self           | 0.44   | 0.42 |           |       |     |
-| Tickit::Widget::Tabbed           | self           | 0.44   | 0.42 | (no)      |       |     |
+| Tickit::Widget::Tabbed           | self           | 0.44   | 0.42 | Cont      |       |     |
 | Tickit::Widget::Table            | self           | XXX    |      | Cont      |       |     |
 | Tickit::Widget::Table::Paged     | self           | 0.44   | 0.42 | Cont      |       |     |
 | Tickit::Widget::Tree             | self           | 0.44   | 0.42 |           | [3]   |     |
