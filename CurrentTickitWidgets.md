@@ -1,7 +1,8 @@
 # Current Tickit Widgets
 
-This document has pictures and thoughts of all the current Tickit.pm
-widgets.
+This table lists the current Tickit::Widget subclasses, their source, the latest Tickit
+version they are tested with and known to work against, and some internal notes detailing
+levels of API conformence or current code experiments ongoing.
 
 | Name                             | Source         | Tested | Win  | Container | Notes | Exp |
 |----------------------------------|----------------|--------|------|-----------|-------|-----|
@@ -46,8 +47,3 @@ Notes:
       callback
 
  [3]: Tickit::Widget::Tree imports Term::TermKey just so it can get KEYMOD_CTRL
-
-Tickit.pm seems to be the best candidate for the future of
-interactive terminal apps, but currently lacks the basic widgets to
-build serious apps.
-
