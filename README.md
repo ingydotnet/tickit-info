@@ -7,12 +7,13 @@ applications in general.
 ## General Info
 
 * [Some Interesting Links](InterestingLinks.md) related to Tickit
+* [Currently Implemented Widgits in Tickit](CurrentTickitWidgets.md)
+* [Tickit Deprecations](TickitDeprecations.md)
 
 ## Widget Research
 
 * [Desirable Widgets to Support](DesirableWidgets.md)
 * [Current set of Curses::UI Widgets](CurrentCursesUIWidgets.md)
-* [Currently Implemented Widgits in Tickit](CurrentTickitWidgets.md)
 
 ## Driving Use Cases
 
