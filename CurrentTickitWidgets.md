@@ -12,6 +12,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::CheckButton      | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Decoration       | self           | 0.44   | 0.42 |           |       |     |
 | Tickit::Widget::Entry            | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
+| Tickit::Widget::FloatBox         | self           | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::Frame            | Tickit-Widgets | 0.44   | 0.42 | Cont 1    |       | SP  |
 | Tickit::Widget::GridBox          | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::HBox             | Tickit         | 0.44   | 0.42 | Cont      |       | SP  |
