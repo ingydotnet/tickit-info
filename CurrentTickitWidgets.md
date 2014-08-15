@@ -15,7 +15,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::FloatBox         | self           | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::Frame            | Tickit-Widgets | 0.44   | 0.42 | Cont 1    |       | SP  |
 | Tickit::Widget::GridBox          | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
-| Tickit::Widget::HBox             | Tickit         | 0.44   | 0.42 | Cont      |       | SP  |
+| Tickit::Widget::HBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::HSplit           | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::Layout::Relative | self           | 0.44   | 0.42 | Cont      | [1,2] |  P  |
 | Tickit::Widget::Menu             | self           | 0.44   | 0.42 |           |       |  P  |
@@ -33,7 +33,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::Table            | self           | XXX    |      | Cont      |       |  P  |
 | Tickit::Widget::Table::Paged     | self           | 0.44   | 0.42 | Cont      |       |  P  |
 | Tickit::Widget::Tree             | self           | 0.44   | 0.42 |           | [3]   |  P  |
-| Tickit::Widget::VBox             | Tickit         | 0.44   | 0.42 | Cont      |       | SP  |
+| Tickit::Widget::VBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::VSplit           | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 
 Exp == Experiments:
