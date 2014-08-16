@@ -18,7 +18,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::GridBox          | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::HBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::HSplit           | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
-| Tickit::Widget::Layout::Relative | self           | 0.44   | 0.42 | Cont      | [1,2] |  P  |
+| Tickit::Widget::Layout::Relative | self           | 0.44   | 0.42 | Cont      | [1]   |  P  |
 | Tickit::Widget::Menu             | self           | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Placegrid        | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Progressbar      | self           | 0.44   | 0.42 |           |       |     |
@@ -45,10 +45,7 @@ Exp == Experiments:
 
 Notes:
 
- [1]: Tickit::Widget::Layout::Relative gut-wrenches inside Tickit::RenderBuffer to obtain cell
-      state in order to set rounded corners.
-
- [2]: Tickit::Widget::Layout::Relative subclasses Tickit::Window to provide an 'on_expose'
+ [1]: Tickit::Widget::Layout::Relative subclasses Tickit::Window to provide an 'on_expose'
       callback
 
- [3]: Tickit::Widget::Tree imports Term::TermKey just so it can get KEYMOD_CTRL
+ [2]: Tickit::Widget::Tree imports Term::TermKey just so it can get KEYMOD_CTRL
