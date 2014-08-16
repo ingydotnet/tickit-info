@@ -32,7 +32,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::Static           | Tickit         | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Statusbar        | self           | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Tabbed           | self           | 0.44   | 0.42 | Cont      |       |  P  |
-| Tickit::Widget::Table            | self           | XXX    |      | Cont      |       |  P  |
+| Tickit::Widget::Table            | self           | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Table::Paged     | self           | 0.44   | 0.42 | Cont      |       |  P  |
 | Tickit::Widget::Tree             | self           | 0.44   | 0.42 |           | [2]   |  P  |
 | Tickit::Widget::VBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
