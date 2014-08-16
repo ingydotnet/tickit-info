@@ -33,7 +33,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::Tabbed           | self           | 0.44   | 0.42 | Cont      |       |  P  |
 | Tickit::Widget::Table            | self           | XXX    |      | Cont      |       |  P  |
 | Tickit::Widget::Table::Paged     | self           | 0.44   | 0.42 | Cont      |       |  P  |
-| Tickit::Widget::Tree             | self           | 0.44   | 0.42 |           | [3]   |  P  |
+| Tickit::Widget::Tree             | self           | 0.44   | 0.42 |           | [2]   |  P  |
 | Tickit::Widget::VBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::VSplit           | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 
