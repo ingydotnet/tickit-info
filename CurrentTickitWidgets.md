@@ -18,6 +18,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::GridBox          | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::HBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
 | Tickit::Widget::HSplit           | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
+| Tickit::Widget::Layout::Desktop  | self           | 0.44   | 0.42 |           | [3]   |  P  |
 | Tickit::Widget::Layout::Relative | self           | 0.44   | 0.42 | Cont      | [1]   |  P  |
 | Tickit::Widget::Menu             | self           | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Placegrid        | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
@@ -49,3 +50,8 @@ Notes:
       callback
 
  [2]: Tickit::Widget::Tree imports Term::TermKey just so it can get KEYMOD_CTRL
+
+ [3]: Tickit::Widget::Layout::Desktop isn\'t a direct container subwidget, but the ::Window
+      items are. May eventually use FloatBox (there are some minor complications around
+	  window tracking logic and rendering)
+
