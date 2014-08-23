@@ -8,6 +8,7 @@ levels of API conformence or current code experiments ongoing.
 |----------------------------------|----------------|--------|------|-----------|-------|-----|
 | Tickit::Widget::Border           | Tickit-Widgets | 0.44   | 0.42 | Cont 1    |       | SP  |
 | Tickit::Widget::Box              | Tickit         | 0.44   | 0.42 | Cont 1    |       | SP  |
+| Tickit::Widget::Breadcrumb       | self           | 0.44   | 0.42 |           |       |     |
 | Tickit::Widget::Button           | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::CheckButton      | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
 | Tickit::Widget::Decoration       | self           | 0.44   | 0.42 |           |       |     |
