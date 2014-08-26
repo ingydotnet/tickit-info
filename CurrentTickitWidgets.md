@@ -4,41 +4,41 @@ This table lists the current Tickit::Widget subclasses, their source, the latest
 version they are tested with and known to work against, and some internal notes detailing
 levels of API conformence or current code experiments ongoing.
 
-| Name                             | Source         | Tested | Win  | Container | Notes | Exp |
-|----------------------------------|----------------|--------|------|-----------|-------|-----|
-| Tickit::Widget::Border           | Tickit-Widgets | 0.44   | 0.42 | Cont 1    |       | SP  |
-| Tickit::Widget::Box              | Tickit         | 0.44   | 0.42 | Cont 1    |       | SP  |
-| Tickit::Widget::Breadcrumb       | self           | 0.44   | 0.42 |           |       |     |
-| Tickit::Widget::Button           | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::CheckButton      | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Decoration       | self           | 0.44   | 0.42 |           |       |     |
-| Tickit::Widget::Entry            | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::FloatBox         | self           | 0.44   | 0.42 | Cont      |       | SP  |
-| Tickit::Widget::FileViewer       | self           | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Fill             | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Frame            | Tickit-Widgets | 0.44   | 0.42 | Cont 1    |       | SP  |
-| Tickit::Widget::GridBox          | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
-| Tickit::Widget::HBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
-| Tickit::Widget::HSplit           | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
-| Tickit::Widget::Layout::Desktop  | self           | 0.44   | 0.42 |           | [3]   |  P  |
-| Tickit::Widget::Layout::Relative | self           | 0.44   | 0.42 | Cont      | [1]   |  P  |
-| Tickit::Widget::Menu             | self           | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Placegrid        | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Progressbar      | self           | 0.44   | 0.42 |           |       |     |
-| Tickit::Widget::RadioButton      | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Scroller         | self           | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::ScrollBox        | self           | 0.44   | 0.42 | Cont 1    |       |  P  |
-| Tickit::Widget::SegmentDisplay   | self           | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::SparkLine        | self           | 0.44   | 0.42 |           |       |     |
-| Tickit::Widget::Spinner          | Tickit-Widgets | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Static           | Tickit         | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Statusbar        | self           | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Tabbed           | self           | 0.44   | 0.42 | Cont      |       |  P  |
-| Tickit::Widget::Table            | self           | 0.44   | 0.42 |           |       |  P  |
-| Tickit::Widget::Table::Paged     | self           | 0.44   | 0.42 | Cont      |       |  P  |
-| Tickit::Widget::Tree             | self           | 0.44   | 0.42 |           | [2]   |  P  |
-| Tickit::Widget::VBox             | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
-| Tickit::Widget::VSplit           | Tickit-Widgets | 0.44   | 0.42 | Cont      |       | SP  |
+| Name                             | Source         | Tested | Container | Notes | Exp |
+|----------------------------------|----------------|--------|-----------|-------|-----|
+| Tickit::Widget::Border           | Tickit-Widgets | 0.44   | Cont 1    |       | SP  |
+| Tickit::Widget::Box              | Tickit         | 0.44   | Cont 1    |       | SP  |
+| Tickit::Widget::Breadcrumb       | self           | 0.44   |           |       |     |
+| Tickit::Widget::Button           | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::CheckButton      | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::Decoration       | self           | 0.44   |           |       |     |
+| Tickit::Widget::Entry            | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::FloatBox         | self           | 0.44   | Cont      |       | SP  |
+| Tickit::Widget::FileViewer       | self           | 0.44   |           |       |  P  |
+| Tickit::Widget::Fill             | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::Frame            | Tickit-Widgets | 0.44   | Cont 1    |       | SP  |
+| Tickit::Widget::GridBox          | Tickit-Widgets | 0.44   | Cont      |       | SP  |
+| Tickit::Widget::HBox             | Tickit-Widgets | 0.44   | Cont      |       | SP  |
+| Tickit::Widget::HSplit           | Tickit-Widgets | 0.44   | Cont      |       | SP  |
+| Tickit::Widget::Layout::Desktop  | self           | 0.44   |           | [3]   |  P  |
+| Tickit::Widget::Layout::Relative | self           | 0.44   | Cont      | [1]   |  P  |
+| Tickit::Widget::Menu             | self           | 0.44   |           |       |  P  |
+| Tickit::Widget::Placegrid        | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::Progressbar      | self           | 0.44   |           |       |     |
+| Tickit::Widget::RadioButton      | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::Scroller         | self           | 0.44   |           |       |  P  |
+| Tickit::Widget::ScrollBox        | self           | 0.44   | Cont 1    |       |  P  |
+| Tickit::Widget::SegmentDisplay   | self           | 0.44   |           |       |  P  |
+| Tickit::Widget::SparkLine        | self           | 0.44   |           |       |     |
+| Tickit::Widget::Spinner          | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::Static           | Tickit         | 0.44   |           |       |  P  |
+| Tickit::Widget::Statusbar        | self           | 0.44   |           |       |  P  |
+| Tickit::Widget::Tabbed           | self           | 0.44   | Cont      |       |  P  |
+| Tickit::Widget::Table            | self           | 0.44   |           |       |  P  |
+| Tickit::Widget::Table::Paged     | self           | 0.44   | Cont      |       |  P  |
+| Tickit::Widget::Tree             | self           | 0.44   |           | [2]   |  P  |
+| Tickit::Widget::VBox             | Tickit-Widgets | 0.44   | Cont      |       | SP  |
+| Tickit::Widget::VSplit           | Tickit-Widgets | 0.44   | Cont      |       | SP  |
 
 Exp == Experiments:
 
