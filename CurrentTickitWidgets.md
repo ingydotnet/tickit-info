@@ -11,6 +11,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::Breadcrumb       | self           | 0.44   |           |       |     |
 | Tickit::Widget::Button           | Tickit-Widgets | 0.44   |           |       |  P  |
 | Tickit::Widget::CheckButton      | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::Choice           | self           | 0.44   |           |       |  P  |
 | Tickit::Widget::Decoration       | self           | 0.44   |           |       |     |
 | Tickit::Widget::Entry            | Tickit-Widgets | 0.44   |           |       |  P  |
 | Tickit::Widget::FloatBox         | self           | 0.44   | Cont      |       | SP  |
