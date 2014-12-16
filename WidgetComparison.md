@@ -8,6 +8,7 @@ This document indicates (near) equivalents between UI widgets in Tickit and othe
 | Box               | -                  | (GtkAlignment)        |
 | Button            | Button             | GtkButton             |
 | CheckButton       | -                  | GtkCheckButton        |
+| Choice            | -                  | GtkComboBox           |
 | Decoration        | -                  | -                     |
 | Entry             | Entry              | GtkEntry              |
 | Frame             | Border             | GtkFrame              |
