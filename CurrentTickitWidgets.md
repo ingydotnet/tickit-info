@@ -8,8 +8,9 @@ levels of API conformence or current code experiments ongoing.
 |----------------------------------|----------------|--------|-----------|-------|-----|
 | Tickit::Widget::Border           | Tickit-Widgets | 0.44   | Cont 1    |       | SP  |
 | Tickit::Widget::Box              | Tickit         | 0.44   | Cont 1    |       | SP  |
-| Tickit::Widget::Breadcrumb       | self           | 0.44   |           |       |     |
+| Tickit::Widget::Breadcrumb       | self           | 0.50   |           |       |  P  |
 | Tickit::Widget::Button           | Tickit-Widgets | 0.44   |           |       |  P  |
+| Tickit::Widget::Calendar::MonthView | Tickit-Widget-Calendars | 0.50   |           |       |  P  |
 | Tickit::Widget::CheckButton      | Tickit-Widgets | 0.44   |           |       |  P  |
 | Tickit::Widget::Choice           | self           | 0.44   |           |       |  P  |
 | Tickit::Widget::Decoration       | self           | 0.44   |           |       |     |
@@ -21,8 +22,9 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::GridBox          | Tickit-Widgets | 0.44   | Cont      |       | SP  |
 | Tickit::Widget::HBox             | Tickit-Widgets | 0.44   | Cont      |       | SP  |
 | Tickit::Widget::HSplit           | Tickit-Widgets | 0.44   | Cont      |       | SP  |
-| Tickit::Widget::Layout::Desktop  | self           | 0.44   |           | [3]   |  P  |
+| Tickit::Widget::Layout::Desktop  | self           | 0.44   |           | [2]   |  P  |
 | Tickit::Widget::Layout::Relative | self           | 0.44   | Cont      | [1]   |  P  |
+| Tickit::Widget::LogAny           | self           | 0.50   |           |       |  P  |
 | Tickit::Widget::Menu             | self           | 0.44   |           |       |  P  |
 | Tickit::Widget::Placegrid        | Tickit-Widgets | 0.44   |           |       |  P  |
 | Tickit::Widget::Progressbar      | self           | 0.44   |           |       |     |
@@ -37,7 +39,7 @@ levels of API conformence or current code experiments ongoing.
 | Tickit::Widget::Tabbed           | self           | 0.44   | Cont      |       |  P  |
 | Tickit::Widget::Table            | self           | 0.44   |           |       |  P  |
 | Tickit::Widget::Table::Paged     | self           | 0.44   | Cont      |       |  P  |
-| Tickit::Widget::Tree             | self           | 0.44   |           | [2]   |  P  |
+| Tickit::Widget::Tree             | self           | 0.50   |           |       |  P  |
 | Tickit::Widget::VBox             | Tickit-Widgets | 0.44   | Cont      |       | SP  |
 | Tickit::Widget::VSplit           | Tickit-Widgets | 0.44   | Cont      |       | SP  |
 
@@ -52,9 +54,7 @@ Notes:
  [1]: Tickit::Widget::Layout::Relative subclasses Tickit::Window to provide an 'on_expose'
       callback
 
- [2]: Tickit::Widget::Tree imports Term::TermKey just so it can get KEYMOD_CTRL
-
- [3]: Tickit::Widget::Layout::Desktop isn\'t a direct container subwidget, but the ::Window
+ [2]: Tickit::Widget::Layout::Desktop isn\'t a direct container subwidget, but the ::Window
       items are. May eventually use FloatBox (there are some minor complications around
-	  window tracking logic and rendering)
+      window tracking logic and rendering)
 
