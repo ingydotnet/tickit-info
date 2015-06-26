@@ -14,4 +14,5 @@ Future versions given in this table are lower limits; if Tickit versions are rel
 | $win->print, ->erasech, ->goto   |  0.45    |  0.48  |  0.50  | *0.52* |
 | Disabling WIDGET_PEN_FROM_STYLE  |  0.47    |  0.49  |  0.51  | *0.53* |
 | Pen observers                    |  0.49    |  0.51  | *0.55* | *0.57* |
+| Disabling window expose_after_scroll | 0.39 |  0.52  | *0.54* | *0.56* |
 | Mutable Widget pens              |  0.51    |  0.53  | *0.55* | *0.57* |
