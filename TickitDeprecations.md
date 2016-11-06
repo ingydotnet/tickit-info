@@ -15,4 +15,5 @@ Future versions given in this table are lower limits; if Tickit versions are rel
 | $term->bind_event_with_flags                | ---      |  0.59  | *0.61* | *0.63* |
 | $term->bind_event_default                   | ---      |  0.60  | *0.62* | *0.64* |
 | $win->term yielding the same object value   |  0.60    | ---    | ---    | *0.62* |
-| Non-newapi $info->type yielding boolean     |  0.60    | *0.62* | ---    | *0.66* |
+| Non-newapi $info->type yielding boolean     |  0.60    | *0.62* | ---    | *0.64* |
+| $win->clear, $win->clearline                | *0.61*   | ---    | YES    | *0.63* |
