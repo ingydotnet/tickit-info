@@ -10,9 +10,6 @@ Future versions given in this table are lower limits; if Tickit versions are rel
 
 | Name                                        | Announce | Warn   | Die    | Remove |
 |---------------------------------------------|----------|--------|--------|--------|
-| Old-style $win->set_on_EVENT                | 0.57     |  0.59  |  0.61  | *0.64* |
 | Hash key access of Tickit::Term event info  | 0.58     |  0.60  |  0.63  | *0.65* |
-| $term->bind_event_with_flags                | ---      |  0.59  |  0.61  | *0.64* |
 | $term->bind_event_default                   | ---      |  0.60  |  0.63  | *0.65* |
 | Non-newapi $info->type yielding boolean     |  0.60    |  0.63  | ---    | *0.65* |
-| $win->clear, $win->clearline                |  0.61    | ---    | YES    | *0.64* |
